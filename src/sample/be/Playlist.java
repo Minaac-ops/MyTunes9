@@ -2,22 +2,15 @@ package sample.be;
 
 public class Playlist {
 
-    public static int id;
     private String name;
     private String duration;
     private int songs;
 
-    public Playlist(int id, String name, String duration, int songs)
+    public Playlist(String name, int songs, String duration)
     {
-        this.id = id;
         this.name = name;
         this.duration = duration;
         this.songs = songs;
-    }
-
-    public int getId()
-    {
-        return id;
     }
 
     public String getName()
@@ -48,5 +41,10 @@ public class Playlist {
     public void setSongs(int songs)
     {
         this.songs = songs;
+    }
+
+    public String toString()
+    {
+        return "Playlist: " + name + ", " + songs + "songs, " + duration + "min";
     }
 }

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SongDAO_DB {
+
     private MyDatabaseConnector myDatabaseConnector;
 
     public SongDAO_DB() throws IOException, SQLServerException {
@@ -20,6 +21,8 @@ public class SongDAO_DB {
 
     public List<Song> getAllSongs() throws IOException, SQLException {
         ArrayList<Song> allSongs = new ArrayList<>();
+
+        //Creating a connection
         try (Connection connection = myDatabaseConnector.getConnection()) {
             String sql = "SELECT * FROM Song";
 

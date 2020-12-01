@@ -2,6 +2,7 @@ package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import sample.be.Playlist;
 import sample.be.Song;
 
 import java.io.IOException;
@@ -38,6 +39,12 @@ public class MyDatabaseConnector {
         List<Song> allSongs = songDAO_db.getAllSongs();
 
         System.out.println(allSongs);
+        connection.close();
+
+        PlaylistDAO_DB playlistDAO_db = new PlaylistDAO_DB();
+
+        List<Playlist> allPlaylist = playlistDAO_db.getAllPlayLists();
+        System.out.println(allPlaylist);
         connection.close();
     }
 }
