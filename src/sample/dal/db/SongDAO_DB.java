@@ -1,6 +1,7 @@
 package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import sample.be.Song;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +13,10 @@ public class SongDAO_DB {
     public SongDAO_DB() throws IOException, SQLServerException {
         myDatabaseConnector = new MyDatabaseConnector();
     }
-    public List<song> getAllSong();
-    List<song> songs = new ArrayList<>();
+
+    public List<Song> getAllSong() {
+        List<Song> songs = new ArrayList<>();
+        
+    }
 
 }
