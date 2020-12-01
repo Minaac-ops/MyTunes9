@@ -1,4 +1,4 @@
-package sample;
+package sample.gui.controller;
 
 public class Controller {
 //test
