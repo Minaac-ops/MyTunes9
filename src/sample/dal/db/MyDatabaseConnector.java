@@ -11,8 +11,7 @@ public class MyDatabaseConnector {
 
     private SQLServerDataSource dataSource;
 
-    public MyDatabaseConnector() throws IOException
-    {
+    public MyDatabaseConnector() throws IOException, SQLServerException {
         dataSource = new SQLServerDataSource();
         dataSource.setServerName("10.176.111.31");
         dataSource.setDatabaseName("MyTunes3");
@@ -24,12 +23,14 @@ public class MyDatabaseConnector {
     {
         return dataSource.getConnection();
     }
-    public void main(String[] args) throws SQLException, IOException {
+
+    public static void main(String[] args) throws SQLException, IOException {
         MyDatabaseConnector databaseConnector = new MyDatabaseConnector();
         Connection connection = databaseConnector.getConnection();
 
-        System.out.println("it is open" + !connection.isClosed());
+        System.out.println("it is open? " + !connection.isClosed());
         connection.close();
-
     }
+
+
 }
