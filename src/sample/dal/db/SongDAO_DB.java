@@ -6,6 +6,7 @@ import sample.be.Song;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,10 @@ public class SongDAO_DB {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Song> getAllSong() throws IOException {
-        ArrayList<Song> songs = new ArrayList<>();
+    public List<Song> getAllSongs() throws IOException, SQLException {
+        ArrayList<Song> allSongs = new ArrayList<>();
         try (Connection connection = myDatabaseConnector.getConnection()) {
-            String sql = "SELECT * FROM songs";
+            String sql = "SELECT * FROM Song";
 
             Statement statement = connection.createStatement();
 
@@ -28,18 +29,16 @@ public class SongDAO_DB {
             {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()){
-                    String Title = resultSet.getString("Title");
-                    String Artist = resultSet.getString("Artist");
-                    String Category = resultSet.getString("Category");
-                    String Duration = resultSet.getString("Duration");
+                    String title = resultSet.getString("Title");
+                    String artist = resultSet.getString("Artist");
+                    String category = resultSet.getString("Category");
+                    String duration = resultSet.getString("Duration");
 
-                    Song song = new Song(Title, Artist, Category, Duration);
-                    Song.add(song);
+                    Song song = new Song(title, artist, category, duration);
+                    allSongs.add(song);
                 }
 
             }
-        }
-        
+        } return allSongs;
     }
-
 }

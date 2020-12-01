@@ -2,10 +2,12 @@ package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import sample.be.Song;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class MyDatabaseConnector {
 
@@ -30,7 +32,12 @@ public class MyDatabaseConnector {
 
         System.out.println("it is open? " + !connection.isClosed());
         connection.close();
+
+        SongDAO_DB songDAO_db = new SongDAO_DB();
+
+        List<Song> allSongs = songDAO_db.getAllSongs();
+
+        System.out.println(allSongs);
+        connection.close();
     }
-
-
 }

@@ -2,21 +2,16 @@ package sample.be;
 
 public class Song {
 
-    private final int id;
     private String title;
     private String artist;
+    private String category;
     private String duration;
 
-    public Song(int id, String title, String artist, String duration) {
-        this.id = id;
+    public Song(String title, String artist, String category, String duration) {
         this.title = title;
         this.artist = artist;
+        this.category = category;
         this.duration = duration;
-    }
-
-    public int getid()
-    {
-        return id;
     }
 
     public String getTitle()
@@ -39,6 +34,16 @@ public class Song {
         this.artist = artist;
     }
 
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
+
     public String getDuration()
     {
         return duration;
@@ -51,7 +56,7 @@ public class Song {
 
     public String toString()
     {
-        return id + ": " + artist + " by " + title + " (" + duration + ")";
+        return title + " by " + artist + " (" + duration + "min." + ")";
     }
 
 }
