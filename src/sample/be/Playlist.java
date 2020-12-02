@@ -4,7 +4,7 @@ public class Playlist {
 
     private String name;
     private String duration;
-    private int songs;
+    private int songs = 0;
     private int id;
 
     public Playlist(int id, String name, int songs, String duration)
