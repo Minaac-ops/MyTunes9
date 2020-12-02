@@ -19,6 +19,14 @@ public interface LogicFacade {
     List<Genre> getAllCategories();
 
     /**
+     * Gets all songs on selected playlist
+     *
+     */
+    List<Song> getAllSongsOnSelectedPlaylist();
+
+
+
+    /**
      * Gets a list of all songs sorted by their genre.
      */
     List<Song> getSpecificGenre(Genre genre);
@@ -29,7 +37,7 @@ public interface LogicFacade {
     List<Song> searchSongs(String query);
 
     /**
-     * Create and add a new mocie to the system storage.
+     * Create and add a new movie to the system storage.
      */
     Song createSong(String title, String artist, String category, String duration);
 
