@@ -5,12 +5,19 @@ public class Playlist {
     private String name;
     private String duration;
     private int songs;
+    private int id;
 
-    public Playlist(String name, int songs, String duration)
+    public Playlist(int id, String name, int songs, String duration)
     {
         this.name = name;
         this.duration = duration;
         this.songs = songs;
+        this.id = id;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getName()

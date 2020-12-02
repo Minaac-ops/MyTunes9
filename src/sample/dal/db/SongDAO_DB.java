@@ -32,12 +32,13 @@ public class SongDAO_DB {
             {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()){
+                    int id = resultSet.getInt("ID");
                     String title = resultSet.getString("Title");
                     String artist = resultSet.getString("Artist");
                     String category = resultSet.getString("Category");
                     String duration = resultSet.getString("Duration");
 
-                    Song song = new Song(title, artist, category, duration);
+                    Song song = new Song(id, title, artist, category, duration);
                     allSongs.add(song);
                 }
 

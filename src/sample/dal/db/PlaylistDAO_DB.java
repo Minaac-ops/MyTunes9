@@ -30,11 +30,12 @@ public class PlaylistDAO_DB {
             if (statement.execute(sql)) {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
                     String name = resultSet.getString("Name");
                     int songs = resultSet.getInt("Songs");
                     String duration = resultSet.getString("Duration");
 
-                    Playlist playlist = new Playlist(name, songs, duration);
+                    Playlist playlist = new Playlist(id, name, songs, duration);
                     allPlayLists.add(playlist);
                 }
             }

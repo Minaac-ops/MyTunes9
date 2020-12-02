@@ -2,16 +2,23 @@ package sample.be;
 
 public class Song {
 
+    private int id;
     private String title;
     private String artist;
     private String category;
     private String duration;
 
-    public Song(String title, String artist, String category, String duration) {
+    public Song(int id, String title, String artist, String category, String duration) {
+        this.id = id;
         this.title = title;
         this.artist = artist;
         this.category = category;
         this.duration = duration;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getTitle()
@@ -56,7 +63,7 @@ public class Song {
 
     public String toString()
     {
-        return title + " by " + artist + " (" + duration + "min." + ")";
+        return id + title + " by " + artist + " (" + duration + "min." + ")";
     }
 
 }

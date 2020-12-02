@@ -2,22 +2,27 @@ package sample.be;
 
 public class Category {
 
-        private static int id;
-        private String name;
+        private static int songId;
+        private String genre;
 
-        public Category(int id, String name)
+        public Category(int id, String genre)
         {
-            this.id = id;
-            this.name = name;
+            this.songId = id;
+            this.genre = genre;
         }
 
-        public int getId()
+        public int getSongId()
         {
-            return id;
+            return songId;
         }
 
-        public String getName()
+        public String getGenre()
         {
-            return name;
+            return genre;
+        }
+
+        public void setGenre(String genre)
+        {
+            this.genre = genre;
         }
 }
