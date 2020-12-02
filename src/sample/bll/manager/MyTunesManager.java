@@ -11,12 +11,12 @@ import java.util.List;
 public class MyTunesManager implements LogicFacade {
 
     /**
-     * Gets a list of the songs with the given genre.
+     * Gets a list of the songs.
      *
-     * @param genre@return
+     * @param
      */
     @Override
-    public List<Song> getAllSongs(Genre genre) {
+    public List<Song> getAllSongs() {
         return null;
     }
 

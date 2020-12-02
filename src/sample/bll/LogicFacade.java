@@ -14,7 +14,7 @@ public interface LogicFacade {
      * @param
      * @return
      */
-    List<Song> getAllSongs(Genre genre);
+    List<Song> getAllSongs();
 
     List<Genre> getAllCategories();
 
@@ -37,7 +37,7 @@ public interface LogicFacade {
     /**
      * Update the saved version of the song to the values in the given one.
      */
-    void updateSong(Song song);
+    void updateSong(Song selectedSong);
 
     /**
      * Deletes the given movie from storage.
