@@ -55,9 +55,6 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public Song createSong(String title, String artist, String category, String duration) {
-        try {
-            retu
-        }
     }
 
     /**

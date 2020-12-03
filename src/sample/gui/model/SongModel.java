@@ -36,10 +36,11 @@ public class SongModel {
     }
 
         public void search(String query) {
-        if (query != null) {
-            List<Song> searchedSongs = logicLayer.searchSongs(query);
-            songs.clear();
-            songs.addAll(searchedSongs);
+            if (query != null) {
+                List<Song> searchedSongs = logicLayer.searchSongs(query);
+                songs.clear();
+                songs.addAll(searchedSongs);
+            }
         }
 
         public void updateSong(Song selectedSong) {
@@ -49,6 +50,5 @@ public class SongModel {
                 songs.sort(Comparator.comparingInt(Song::getId));
             }
         }
-    }
 
-}
+    }
