@@ -17,7 +17,7 @@ public class MyDatabaseConnector {
     public MyDatabaseConnector() throws IOException, SQLServerException {
         dataSource = new SQLServerDataSource();
         dataSource.setServerName("10.176.111.31");
-        dataSource.setDatabaseName("MyTunes3");
+        dataSource.setDatabaseName("MyTunes4");
         dataSource.setUser("CSe20A_26");
         dataSource.setPassword("CSe20A_26");
 

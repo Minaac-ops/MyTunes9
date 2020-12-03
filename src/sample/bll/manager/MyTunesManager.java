@@ -26,6 +26,14 @@ public class MyTunesManager implements LogicFacade {
     }
 
     /**
+     * Gets all songs on selected playlist
+     */
+    @Override
+    public List<Song> getAllSongsOnSelectedPlaylist() {
+        return null;
+    }
+
+    /**
      * Gets a list of all songs sorted by their genre.
      *
      * @param genre
@@ -53,8 +61,10 @@ public class MyTunesManager implements LogicFacade {
      * @param category
      * @param duration
      */
-    @Override
-    public Song createSong(String title, String artist, String category, String duration) {
+
+
+    public Song createSong(int id, String title, String artist, String category, String duration) {
+        return null;
     }
 
     /**

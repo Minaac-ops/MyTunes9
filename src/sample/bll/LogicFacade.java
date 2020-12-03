@@ -39,7 +39,7 @@ public interface LogicFacade {
     /**
      * Create and add a new movie to the system storage.
      */
-    Song createSong(String title, String artist, String category, String duration);
+    Song createSong(int id, String title, String artist, String category, String duration);
 
 
     /**

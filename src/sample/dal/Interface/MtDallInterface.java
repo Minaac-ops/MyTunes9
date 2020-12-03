@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MtDallInterface {
 
-    Song createSong(String title, String artist, String category, String duration);
+    Song createSong(int id, String title, String artist, String category, String duration);
 
     void updateSong(Song song);
 
