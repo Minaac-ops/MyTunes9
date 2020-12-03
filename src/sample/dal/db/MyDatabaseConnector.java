@@ -5,46 +5,50 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Playlist;
 import sample.be.Song;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 public class MyDatabaseConnector {
 
+
+
     private SQLServerDataSource dataSource;
 
-    public MyDatabaseConnector() throws IOException, SQLServerException {
-        dataSource = new SQLServerDataSource();
-        dataSource.setServerName("10.176.111.31");
-        dataSource.setDatabaseName("MyTunes4");
-        dataSource.setUser("CSe20A_26");
-        dataSource.setPassword("CSe20A_26");
+    private static final String PROP_FILE = "db_properties";
+    private SQLServerDataSource ds;
 
+    public MyDatabaseConnector() throws IOException {
+        Properties databaseProperties = new Properties();
+        databaseProperties.load(new FileInputStream(new File(PROP_FILE)));
+
+        String server = databaseProperties.getProperty("10.176.111.31");
+        String database = databaseProperties.getProperty("MyTunes4");
+        String user = databaseProperties.getProperty("CSe20A_26");
+        String password = databaseProperties.getProperty("CSe20A_26");
+
+        ds = new SQLServerDataSource();
+        ds.setServerName(server);
+        ds.setDatabaseName(database);
+        ds.setUser(user);
+        ds.setPassword(password);
     }
-    public Connection getConnection() throws SQLServerException
+    public Connection getConnection() throws SQLException
     {
-        return dataSource.getConnection();
+        return ds.getConnection();
     }
 
-    public static void main(String[] args) throws SQLException, IOException {
-        MyDatabaseConnector databaseConnector = new MyDatabaseConnector();
-        Connection connection = databaseConnector.getConnection();
+    public static void main(String[] args) throws IOException, SQLException {
 
-        System.out.println("it is open? " + !connection.isClosed());
-        connection.close();
+        MyDatabaseConnector ds = new MyDatabaseConnector();
 
-        SongDAO_DB songDAO_db = new SongDAO_DB();
-
-        List<Song> allSongs = songDAO_db.getAllSongs();
-
-        System.out.println(allSongs);
-        connection.close();
-
-        PlaylistDAO_DB playlistDAO_db = new PlaylistDAO_DB();
-
-        List<Playlist> allPlaylist = playlistDAO_db.getAllPlayLists();
-        System.out.println(allPlaylist);
-        connection.close();
+        try (Connection connection = ds.getConnection()) {
+            System.out.println("Is it open? " + !connection.isClosed());
+        }
     }
 }

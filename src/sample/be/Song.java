@@ -63,7 +63,7 @@ public class Song {
 
     public String toString()
     {
-        return id + title + " by " + artist + " (" + duration + "min." + ")";
+         return "Song#" + id + ": " + title + " by " + artist + " (" + duration + "min." + ")";
     }
 
 }

@@ -1,10 +1,9 @@
 package sample.bll.manager;
 
 
-import sample.be.Genre;
+import sample.be.Category;
 import sample.be.Song;
 import sample.bll.LogicFacade;
-import sample.dal.Interface.MtDallInterface;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class MyTunesManager implements LogicFacade {
     }
 
     @Override
-    public List<Genre> getAllCategories() {
+    public List<Category> getAllCategories() {
         return null;
     }
 
@@ -36,10 +35,10 @@ public class MyTunesManager implements LogicFacade {
     /**
      * Gets a list of all songs sorted by their genre.
      *
-     * @param genre
+     * @param category
      */
     @Override
-    public List<Song> getSpecificGenre(Genre genre) {
+    public List<Song> getSpecificGenre(Category category) {
         return null;
     }
 

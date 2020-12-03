@@ -19,7 +19,7 @@ public class SongDAO_DB {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Song> getAllSongs() throws IOException, SQLException {
+    public List<Song> getAllSongs() throws SQLException {
         ArrayList<Song> allSongs = new ArrayList<>();
 
         //Creating a connection
@@ -32,7 +32,7 @@ public class SongDAO_DB {
             {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()){
-                    int id = resultSet.getInt("ID");
+                    int id = resultSet.getInt("Song_ID");
                     String title = resultSet.getString("Title");
                     String artist = resultSet.getString("Artist");
                     String category = resultSet.getString("Category");
@@ -41,8 +41,10 @@ public class SongDAO_DB {
                     Song song = new Song(id, title, artist, category, duration);
                     allSongs.add(song);
                 }
-
             }
         } return allSongs;
     }
+
+
+
 }

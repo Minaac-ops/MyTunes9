@@ -7,11 +7,9 @@ public class Playlist {
     private int songs = 0;
     private int id;
 
-    public Playlist(int id, String name, int songs, String duration)
+    public Playlist(int id, String name)
     {
         this.name = name;
-        this.duration = duration;
-        this.songs = songs;
         this.id = id;
     }
 
@@ -30,28 +28,9 @@ public class Playlist {
         this.name = name;
     }
 
-    public String getDuration()
-    {
-        return duration;
-    }
-
-    public void setDuration(String duration)
-    {
-        this.duration = duration;
-    }
-
-    public int getSongs()
-    {
-        return songs;
-    }
-
-    public void setSongs(int songs)
-    {
-        this.songs = songs;
-    }
 
     public String toString()
     {
-        return "Playlist: " + name + ", " + songs + "songs, " + duration + "min";
+        return "Playlist#" + id + ": " + name;
     }
 }

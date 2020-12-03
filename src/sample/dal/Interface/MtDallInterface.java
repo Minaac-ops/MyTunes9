@@ -1,6 +1,6 @@
 package sample.dal.Interface;
 
-import sample.be.Genre;
+import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
 
@@ -14,15 +14,15 @@ public interface MtDallInterface {
 
     void deleleMovie(Song song);
 
-    void createGenre(Genre genre);
+    void createGenre(Category category);
 
-    void deleteGenre(Genre genre);
+    void deleteGenre(Category category);
 
     List<Song> getAllSongs();
 
     List<Playlist> getAllPlaylists();
 
-    List<Genre> getAllGenres();
+    List<Category> getAllGenres();
 
     Song getMovie(int id);
 

@@ -1,6 +1,6 @@
 package sample.bll;
 
-import sample.be.Genre;
+import sample.be.Category;
 import sample.be.Song;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public interface LogicFacade {
      */
     List<Song> getAllSongs();
 
-    List<Genre> getAllCategories();
+    List<Category> getAllCategories();
 
     /**
      * Gets all songs on selected playlist
@@ -29,7 +29,7 @@ public interface LogicFacade {
     /**
      * Gets a list of all songs sorted by their genre.
      */
-    List<Song> getSpecificGenre(Genre genre);
+    List<Song> getSpecificGenre(Category category);
 
     /**
      * Searches for all songs that matches the given query.

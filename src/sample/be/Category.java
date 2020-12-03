@@ -1,19 +1,19 @@
 package sample.be;
 
-public class Genre {
+public class Category {
 
         private String genre;
-        private static int genreID;
+        private static int categoryID;
 
-        public Genre(int genreID, String genre)
+        public Category(int categoryID, String genre)
         {
             this.genre = genre;
-            this.genreID = genreID;
+            this.categoryID = categoryID;
         }
 
-        public int getGenreID()
+        public int getCategoryID()
         {
-            return genreID;
+            return categoryID;
         }
 
         public String getGenre()
