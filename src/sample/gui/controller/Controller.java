@@ -1,9 +1,7 @@
 package sample.gui.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.gui.model.SongModel;
@@ -17,6 +15,12 @@ public class Controller {
     @FXML
     private ListView<Song> lstSong;
     @FXML
+    private Button newSong;
+    @FXML
+    private Button editSong;
+    @FXML
+    private Button deleteSong;
+    @FXML
     private ListView<Playlist> lstPlaylist;
     @FXML
     private Button newPlaylist;
@@ -29,12 +33,6 @@ public class Controller {
     @FXML
     private Button buttonDown;
     @FXML
-    private Button newSong;
-    @FXML
-    private Button editSong;
-    @FXML
-    private Button deleteSong;
-    @FXML
     private Button close;
     @FXML
     private Button skipBack;
@@ -44,6 +42,14 @@ public class Controller {
     private Button skipForward;
     @FXML
     private Button moveSong;
+    @FXML
+    private Slider volume;
+    @FXML
+    private ProgressBar progressBar;
+    @FXML
+    private TextField txtCurrentlyPlaying;
+    @FXML
+    private TextField txtFilter;
 
     
 

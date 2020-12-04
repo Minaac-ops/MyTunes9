@@ -24,14 +24,14 @@
         <Button fx:id="skipBack" layoutX="27.0" layoutY="40.0" mnemonicParsing="false" text="Skipback" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="40.0" />
         <Button fx:id="playPause" layoutX="90.0" layoutY="40.0" mnemonicParsing="false" text="Play/Pause" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="40.0" />
         <Button fx:id="skipForward" layoutX="164.0" layoutY="40.0" mnemonicParsing="false" text="Skipforward" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="40.0" />
-        <Slider layoutX="84.0" layoutY="75.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="75.0" />
-        <TextField layoutX="602.0" layoutY="40.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="40.0" />
+        <Slider fx:id="volume" layoutX="84.0" layoutY="75.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="75.0" />
+        <TextField fx:id="txtFilter" layoutX="602.0" layoutY="40.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="40.0" />
         <Label layoutX="37.0" layoutY="73.0" text="Volume:" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="73.0" />
         <ListView layoutX="287.0" layoutY="122.0" prefHeight="327.0" prefWidth="123.0" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="122.0" />
         <Button fx:id="moveSong" layoutX="424.0" layoutY="122.0" mnemonicParsing="false" text="&lt;" AnchorPane.leftAnchor="424.0" AnchorPane.topAnchor="122.0" />
         <Label layoutX="572.0" layoutY="44.0" text="Filter:" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="44.0" />
-        <TextField layoutX="289.0" layoutY="40.0" prefHeight="25.0" prefWidth="218.0" text="Currently playing: [SONG NAME]" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="40.0" />
-        <ProgressBar layoutX="298.0" layoutY="72.0" prefWidth="200.0" progress="0.68" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="72.0" />
+        <TextField fx:id="txtCurrentlyPlaying" layoutX="289.0" layoutY="40.0" prefHeight="25.0" prefWidth="218.0" text="Currently playing: [SONG NAME]" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="40.0" />
+        <ProgressBar fx:id="progressBar" layoutX="298.0" layoutY="72.0" prefWidth="200.0" progress="0.68" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="72.0" />
         <Button layoutX="378.0" layoutY="558.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="473.5" />
         <Label layoutX="36.0" layoutY="105.0" text="Playlists" AnchorPane.leftAnchor="37.0" />
         <Label layoutX="287.0" layoutY="105.0" text="Songs in Playlists" AnchorPane.leftAnchor="287.0" />
