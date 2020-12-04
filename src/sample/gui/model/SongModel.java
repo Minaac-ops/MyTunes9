@@ -21,6 +21,10 @@ public class SongModel {
         songs.addAll(logicLayer.getAllSongs());
     }
 
+    /**
+     * Gets a reference to the obsercable list os songs.
+     * @return List of songs.
+     */
     public ObservableList<Song> getSongs() {
         return songs;
     }
