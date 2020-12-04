@@ -20,7 +20,7 @@ public class MyDatabaseConnector {
 
     private SQLServerDataSource dataSource;
 
-    private static final String PROP_FILE = "db_properties";
+    private static final String PROP_FILE = "src/db.properties";
     private SQLServerDataSource ds;
 
     public MyDatabaseConnector() throws IOException {
@@ -45,10 +45,5 @@ public class MyDatabaseConnector {
 
     public static void main(String[] args) throws IOException, SQLException {
 
-        MyDatabaseConnector ds = new MyDatabaseConnector();
-
-        try (Connection connection = ds.getConnection()) {
-            System.out.println("Is it open? " + !connection.isClosed());
-        }
     }
 }
