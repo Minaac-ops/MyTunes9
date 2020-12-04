@@ -19,7 +19,31 @@ public class Controller {
     @FXML
     private ListView<Playlist> lstPlaylist;
     @FXML
-    private Button createSong;
+    private Button newPlaylist;
+    @FXML
+    private Button editPlaylist;
+    @FXML
+    private Button deletePlaylist;
+    @FXML
+    private Button buttonUp;
+    @FXML
+    private Button buttonDown;
+    @FXML
+    private Button newSong;
+    @FXML
+    private Button editSong;
+    @FXML
+    private Button deleteSong;
+    @FXML
+    private Button close;
+    @FXML
+    private Button skipBack;
+    @FXML
+    private Button playPause;
+    @FXML
+    private Button skipForward;
+    @FXML
+    private Button moveSong;
 
     
 
