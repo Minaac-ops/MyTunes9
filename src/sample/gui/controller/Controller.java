@@ -18,9 +18,9 @@ public class Controller {
     @FXML
     private ListView<Song> lstSong;
     @FXML
-    private Button newSong;
+    private Button createSong;
     @FXML
-    private Button editSong;
+    private Button updateSong;
     @FXML
     private Button deleteSong;
     @FXML
