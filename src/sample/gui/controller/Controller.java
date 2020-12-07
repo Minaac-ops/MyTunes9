@@ -2,17 +2,22 @@ package sample.gui.controller;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.bll.BllException;
+import sample.dal.DalException;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     private SongModel songModel;
     private PlaylistModel playlistModel;
@@ -57,15 +62,27 @@ public class Controller {
     private TextField txtFilter;
 
 
-    public Controller() throws IOException, SQLServerException {
-        songModel = new SongModel();
-        playlistModel = new PlaylistModel();
-
+    public Controller() throws IOException, SQLException, BllException, DalException {
+        try {
+            songModel = new SongModel();
+        } catch (BllException ex) {
+            displayError(ex);
+            System.exit(0);
+        }
     }
 
 
+    /**
+     * Called to initialize a controller after its root element has been
+     * completely processed.
+     *
+     * @param url  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param rb The resources used to localize the root object, or {@code null} if
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        lstSong.setItems(songModel.getAllSongs());
 
-
-
-
+    }
 }
