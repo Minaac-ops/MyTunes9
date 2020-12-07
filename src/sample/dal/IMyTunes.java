@@ -1,4 +1,4 @@
-package sample.dal.Interface;
+package sample.dal;
 
 import sample.be.Category;
 import sample.be.Playlist;
@@ -6,7 +6,7 @@ import sample.be.Song;
 
 import java.util.List;
 
-public interface MtDallInterface {
+public interface IMyTunes {
 
     Song createSong(int id, String title, String artist, String category, String duration);
 

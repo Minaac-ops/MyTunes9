@@ -1,15 +1,12 @@
 package sample.gui.model;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.LogicFacade;
-import sample.bll.manager.MyTunesManager;
-
-import java.util.List;
+import sample.bll.MyTunesManager;
 
 public class PlaylistModel {
 
@@ -21,7 +18,7 @@ public class PlaylistModel {
     public PlaylistModel() {
         selectedPlaylist = new SimpleObjectProperty<>();
         logicFacade = new MyTunesManager();
-        songsOnPlaylist.addAll(logicFacade.getAllSongsOnSelectedPlaylist());
+        //songsOnPlaylist.addAll(logicFacade.getAllSongsOnSelectedPlaylist());
     }
 
     public void getSelectedPlaylist(ObservableValue<Playlist> playlist) {

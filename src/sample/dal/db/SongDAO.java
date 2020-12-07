@@ -11,11 +11,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongDAO_DB {
+public class SongDAO {
 
     private MyDatabaseConnector myDatabaseConnector;
 
-    public SongDAO_DB() throws IOException, SQLServerException {
+    public SongDAO() throws IOException, SQLServerException {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 

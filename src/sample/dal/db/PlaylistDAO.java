@@ -11,11 +11,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistDAO_DB {
+public class PlaylistDAO {
 
     private MyDatabaseConnector myDatabaseConnector;
 
-    public PlaylistDAO_DB() throws IOException, SQLServerException {
+    public PlaylistDAO() throws IOException, SQLServerException {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 
@@ -32,8 +32,10 @@ public class PlaylistDAO_DB {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("PL_ID");
                     String name = resultSet.getString("Name");
+                    int songCount = resultSet.getInt("Songs");
+                    String totalTime = resultSet.getString("Time");
 
-                    Playlist playlist = new Playlist(id, name);
+                    Playlist playlist = new Playlist(name, songCount, totalTime, id);
                     allPlayLists.add(playlist);
                 }
             }

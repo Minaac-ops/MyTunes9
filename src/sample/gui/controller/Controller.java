@@ -4,13 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
+import java.net.URL;
 import java.util.List;
 
 public class Controller {
 
     private SongModel songModel;
+    private PlaylistModel playlistModel;
 
     @FXML
     private ListView<Song> lstSong;
@@ -50,6 +53,14 @@ public class Controller {
     private TextField txtCurrentlyPlaying;
     @FXML
     private TextField txtFilter;
+
+
+    public Controller()
+    {
+        songModel = new SongModel();
+        playlistModel = new PlaylistModel();
+
+    }
 
 
 

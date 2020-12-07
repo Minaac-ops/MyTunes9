@@ -16,34 +16,27 @@ import java.util.Properties;
 
 public class MyDatabaseConnector {
 
-
-
     private SQLServerDataSource dataSource;
 
-    private static final String PROP_FILE = "src/db.properties";
-    private SQLServerDataSource ds;
-
-    public MyDatabaseConnector() throws IOException {
-        Properties databaseProperties = new Properties();
-        databaseProperties.load(new FileInputStream(new File(PROP_FILE)));
-
-        String server = databaseProperties.getProperty("10.176.111.31");
-        String database = databaseProperties.getProperty("MyTunes4");
-        String user = databaseProperties.getProperty("CSe20A_26");
-        String password = databaseProperties.getProperty("CSe20A_26");
-
-        ds = new SQLServerDataSource();
-        ds.setServerName(server);
-        ds.setDatabaseName(database);
-        ds.setUser(user);
-        ds.setPassword(password);
-    }
-    public Connection getConnection() throws SQLException
+    public MyDatabaseConnector()
     {
-        return ds.getConnection();
+        dataSource = new SQLServerDataSource();
+        dataSource.setServerName("10.176.111.31");
+        dataSource.setDatabaseName("MyTunes4");
+        dataSource.setUser("CSe20A_26");
+        dataSource.setPassword("CSe20A_26");
     }
 
-    public static void main(String[] args) throws IOException, SQLException {
+    public Connection getConnection() throws SQLServerException {
+        return dataSource.getConnection();
+    }
 
+    public static void main(String[] args) throws SQLException {
+        MyDatabaseConnector databaseConnector = new MyDatabaseConnector();
+        Connection connection = databaseConnector.getConnection();
+
+        System.out.println("Is it open? " + !connection.isClosed());
+
+        connection.close();
     }
 }
