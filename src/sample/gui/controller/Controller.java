@@ -1,74 +1,41 @@
 package sample.gui.controller;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import sample.be.Playlist;
 import sample.be.Song;
-import sample.bll.BllException;
-import sample.dal.DalException;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     private SongModel songModel;
     private PlaylistModel playlistModel;
+    private ObservableList<Song> observableListSong;
 
     @FXML
-    private ListView<Song> lstSong;
+    private TableView<Song> lstSongs;
     @FXML
-    private Button createSong;
+    private TableColumn<Song, String> songTitleColumn;
     @FXML
-    private Button updateSong;
+    private TableColumn<Song, String> songArtistColumn;
     @FXML
-    private Button deleteSong;
+    private TableColumn<Song, String> categoryColumn;
     @FXML
-    private ListView<Playlist> lstPlaylist;
-    @FXML
-    private Button newPlaylist;
-    @FXML
-    private Button editPlaylist;
-    @FXML
-    private Button deletePlaylist;
-    @FXML
-    private Button buttonUp;
-    @FXML
-    private Button buttonDown;
-    @FXML
-    private Button close;
-    @FXML
-    private Button skipBack;
-    @FXML
-    private Button playPause;
-    @FXML
-    private Button skipForward;
-    @FXML
-    private Button moveSong;
-    @FXML
-    private Slider volume;
-    @FXML
-    private ProgressBar progressBar;
-    @FXML
-    private TextField txtCurrentlyPlaying;
-    @FXML
-    private TextField txtFilter;
+    private TableColumn<Song, String> songTimeColumn;
 
 
-    public Controller() throws IOException, SQLException, BllException, DalException {
-        try {
+    public Controller() throws IOException, SQLException {
             songModel = new SongModel();
-        } catch (BllException ex) {
-            displayError(ex);
-            System.exit(0);
-        }
     }
 
 
@@ -82,7 +49,17 @@ public class Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lstSong.setItems(songModel.getAllSongs());
+        try {
+            observableListSong = songModel.getAllSongs();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        songTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        songArtistColumn.setCellValueFactory(new PropertyValueFactory<>("Artist"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("Category"));
+        songTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Duration"));
+
+        lstSongs.setItems(observableListSong);
 
     }
 }

@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.dal.DalController;
-import sample.dal.DalException;
 import sample.dal.IMyTunes;
 import sample.dal.db.SongDAO;
 
@@ -16,15 +15,10 @@ import java.util.List;
 
 public class MyTunesManager implements LogicFacade {
 
-    private final IMyTunes dalfade;
+    private final SongDAO songDAO;
 
-    public MyTunesManager() throws BllException {
-        try {
-            dalfade = new DalController();
-        } catch (IOException | SQLServerException ex)
-        {
-            throw new BllException("Could not connect to DAL layer.");
-        }
+    public MyTunesManager() throws IOException, SQLServerException {
+            songDAO = new SongDAO();
     }
 
     /**
@@ -33,8 +27,8 @@ public class MyTunesManager implements LogicFacade {
      * @return a list of songs.
      */
     @Override
-    public List<Song> getAllSongs() throws BllException {
-        return dalfade.getAllSongs();
+    public List<Song> getAllSongs() throws SQLException {
+        return songDAO.getAllSongs();
     }
 
     /**

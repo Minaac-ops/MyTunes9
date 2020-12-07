@@ -5,12 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.Controller">
     <children>
         <TreeTableView layoutX="26.0" layoutY="112.0" prefHeight="294.0" prefWidth="164.0">
             <columns>
@@ -22,14 +24,6 @@
         <TreeTableView layoutX="222.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
             <columns>
                 <TreeTableColumn prefWidth="199.199951171875" text="Songs in playlist" />
-            </columns>
-        </TreeTableView>
-        <TreeTableView fx:id="lstSongs" layoutX="497.0" layoutY="112.0" prefHeight="294.0" prefWidth="277.0">
-            <columns>
-                <TreeTableColumn fx:id="nameColumn" prefWidth="70.40005493164062" text="Title" />
-                <TreeTableColumn fx:id="artistColumn" prefWidth="68.800048828125" text="Artist" />
-                <TreeTableColumn fx:id="categorycolumn" prefWidth="79.99993896484375" text="Category" />
-                <TreeTableColumn fx:id="timeColoumn" prefWidth="56.00002441406252" text="Time" />
             </columns>
         </TreeTableView>
         <ButtonBar layoutX="497.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
@@ -62,5 +56,13 @@
         <RadioButton layoutX="77.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" />
         <RadioButton layoutX="42.0" layoutY="35.0" mnemonicParsing="false" />
         <RadioButton layoutX="108.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" />
+      <TableView layoutX="497.0" layoutY="112.0" prefHeight="288.0" prefWidth="278.0">
+        <columns>
+          <TableColumn fx:id="songTitleColumn" prefWidth="74.39999389648438" text="Title" />
+          <TableColumn fx:id="songArtistColumn" prefWidth="69.5999755859375" text="Artist" />
+            <TableColumn fx:id="categoryColumn" prefWidth="66.39990234375" text="Category" />
+            <TableColumn fx:id="songTimeColumn" prefWidth="67.19992675781248" text="Duration" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

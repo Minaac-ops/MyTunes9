@@ -1,5 +1,7 @@
 package sample.be;
 
+import javafx.collections.ObservableArray;
+
 public class Song {
 
     private int id;
