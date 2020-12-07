@@ -1,40 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ListView fx:id="lstPlaylist" layoutX="35.0" layoutY="122.0" prefHeight="327.0" prefWidth="237.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="122.0" />
-        <ListView fx:id="lstSong" layoutX="508.0" layoutY="122.0" prefHeight="327.0" prefWidth="335.0" AnchorPane.leftAnchor="508.0" AnchorPane.topAnchor="122.0" />
-        <Button fx:id="newPlaylist" layoutX="32.0" layoutY="505.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="New..." AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="32.0" />
-        <Button fx:id="editPlaylist" layoutX="90.0" layoutY="505.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Edit..." AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="90.0" />
-        <Button fx:id="deletePlaylist" layoutX="144.0" layoutY="505.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="144.0" />
-        <Button fx:id="buttonUp" layoutX="289.0" layoutY="558.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="35.0" text="UP" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="580.0" />
-        <Button fx:id="buttonDown" layoutX="322.0" layoutY="558.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="57.0" text="DOWN" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="523.0" />
-        <Button fx:id="createSong" layoutX="517.0" layoutY="558.0" mnemonicParsing="false" text="New..." AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="337.0" />
-        <Button fx:id="updateSong" layoutX="565.0" layoutY="558.0" mnemonicParsing="false" text="Edit..." AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="293.0" />
-        <Button fx:id="deleteSong" layoutX="609.0" layoutY="558.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="242.5" />
-        <Button fx:id="close" layoutX="808.0" layoutY="558.0" mnemonicParsing="false" text="Close" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="49.0" />
-        <Button fx:id="skipBack" layoutX="27.0" layoutY="40.0" mnemonicParsing="false" text="Skipback" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="40.0" />
-        <Button fx:id="playPause" layoutX="90.0" layoutY="40.0" mnemonicParsing="false" text="Play/Pause" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="40.0" />
-        <Button fx:id="skipForward" layoutX="164.0" layoutY="40.0" mnemonicParsing="false" text="Skipforward" AnchorPane.leftAnchor="164.0" AnchorPane.topAnchor="40.0" />
-        <Slider fx:id="volume" layoutX="84.0" layoutY="75.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="75.0" />
-        <TextField fx:id="txtFilter" layoutX="602.0" layoutY="40.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="40.0" />
-        <Label layoutX="37.0" layoutY="73.0" text="Volume:" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="73.0" />
-        <ListView layoutX="287.0" layoutY="122.0" prefHeight="327.0" prefWidth="123.0" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="122.0" />
-        <Button fx:id="moveSong" layoutX="424.0" layoutY="122.0" mnemonicParsing="false" text="&lt;" AnchorPane.leftAnchor="424.0" AnchorPane.topAnchor="122.0" />
-        <Label layoutX="572.0" layoutY="44.0" text="Filter:" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="44.0" />
-        <TextField fx:id="txtCurrentlyPlaying" layoutX="289.0" layoutY="40.0" prefHeight="25.0" prefWidth="218.0" text="Currently playing: [SONG NAME]" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="40.0" />
-        <ProgressBar fx:id="progressBar" layoutX="298.0" layoutY="72.0" prefWidth="200.0" progress="0.68" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="72.0" />
-        <Button layoutX="378.0" layoutY="558.0" mnemonicParsing="false" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="473.5" />
-        <Label layoutX="36.0" layoutY="105.0" text="Playlists" AnchorPane.leftAnchor="37.0" />
-        <Label layoutX="287.0" layoutY="105.0" text="Songs in Playlists" AnchorPane.leftAnchor="287.0" />
-        <Label layoutX="508.0" layoutY="105.0" text="Songs" AnchorPane.leftAnchor="508.0" AnchorPane.topAnchor="105.0" />
+        <TreeTableView layoutX="26.0" layoutY="112.0" prefHeight="294.0" prefWidth="164.0">
+            <columns>
+                <TreeTableColumn prefWidth="54.39999580383301" text="Name" />
+                <TreeTableColumn prefWidth="55.99999237060547" text="Songs" />
+                <TreeTableColumn prefWidth="53.5999755859375" text="Time" />
+            </columns>
+        </TreeTableView>
+        <TreeTableView layoutX="222.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
+            <columns>
+                <TreeTableColumn prefWidth="199.199951171875" text="Songs in playlist" />
+            </columns>
+        </TreeTableView>
+        <TreeTableView fx:id="lstSongs" layoutX="497.0" layoutY="112.0" prefHeight="294.0" prefWidth="277.0">
+            <columns>
+                <TreeTableColumn fx:id="nameColumn" prefWidth="70.40005493164062" text="Title" />
+                <TreeTableColumn fx:id="artistColumn" prefWidth="68.800048828125" text="Artist" />
+                <TreeTableColumn fx:id="categorycolumn" prefWidth="79.99993896484375" text="Category" />
+                <TreeTableColumn fx:id="timeColoumn" prefWidth="56.00002441406252" text="Time" />
+            </columns>
+        </TreeTableView>
+        <ButtonBar layoutX="497.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <Button mnemonicParsing="false" text="New" />
+                <Button mnemonicParsing="false" text="Edit" />
+                <Button mnemonicParsing="false" text="Delete" />
+            </buttons>
+        </ButtonBar>
+        <ButtonBar layoutX="332.0" layoutY="406.0" prefHeight="40.0" prefWidth="92.0">
+            <buttons>
+                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Button" />
+            </buttons>
+        </ButtonBar>
+        <Button layoutX="134.0" layoutY="413.0" minWidth="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="57.0" text="Delete" />
+        <Button layoutX="18.0" layoutY="413.0" minWidth="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Edit" />
+        <Button layoutX="76.0" layoutY="413.0" minWidth="43.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" text="New" />
+        <ButtonBar layoutX="8.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <Button minWidth="46.0" mnemonicParsing="false" prefHeight="26.0" text="Delete" />
+            </buttons>
+        </ButtonBar>
+        <Button layoutX="446.0" layoutY="134.0" mnemonicParsing="false" text="&lt;" />
+        <TextArea layoutX="566.0" layoutY="25.0" prefHeight="14.0" prefWidth="138.0" />
+        <Button layoutX="712.0" layoutY="25.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" text="Filter" />
+        <Label layoutX="522.0" layoutY="25.0" prefHeight="38.0" prefWidth="43.0" text="Filter:" />
+        <Button layoutX="282.0" layoutY="413.0" minWidth="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
+        <Button layoutX="244.0" layoutY="414.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
+        <Slider layoutX="43.0" layoutY="63.0" prefHeight="14.0" prefWidth="84.0" />
+        <RadioButton layoutX="77.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" />
+        <RadioButton layoutX="42.0" layoutY="35.0" mnemonicParsing="false" />
+        <RadioButton layoutX="108.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" />
     </children>
 </AnchorPane>

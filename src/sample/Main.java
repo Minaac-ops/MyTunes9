@@ -15,11 +15,11 @@ import java.sql.SQLException;
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("source/gui/view/sample.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("gui/view/sample.fxml"));
+        primaryStage.setTitle("Hello world");
+        primaryStage.setScene(new Scene(root, 796, 487));
+        primaryStage.show();
     }
 
 

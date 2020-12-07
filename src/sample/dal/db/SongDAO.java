@@ -1,5 +1,6 @@
 package sample.dal.db;
 
+import java.sql.Connection;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Song;
 import sample.dal.DalException;
@@ -11,40 +12,40 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Statement;
 
 public class SongDAO {
 
-    private MyDatabaseConnector myDatabaseConnector;
+    private MyDatabaseConnector databaseConnector;
 
-    private final JDBCConnectionPool connectionPool;
-
-    public SongDAO() throws IOException, SQLServerException {
-        connectionPool = JDBCConnectionPool.getInstance();
+    public SongDAO() throws IOException {
+        databaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Song> getAllSongs() throws DalException, SQLException {
-        List<Song> songs = new ArrayList<>();
-        Connection con = connectionPool.checkOut();
-
-        //Creating a connection
-        try (Statement statement = con.createStatement()) {
-            ResultSet rs = statement.executeQuery("SELECT * FROM Song;");
-            while (rs.next()) {
-                int id = rs.getInt("Song_ID");
-                String title = rs.getString("Title");
-                String artist = rs.getString("Artist");
-                String category = rs.getString("Category");
-                String duration = rs.getString("Duration");
-                Song song = new Song(id, title, artist, category, duration);
-                songs.add(song);
-            }
-            return songs;
-        } catch (SQLException ex)
+    public List<Song> getAllSongs() throws SQLException
+    {
+        ArrayList<Song> getAllSongs = new ArrayList<>();
+        try (Connection connection = databaseConnector.getConnection())
         {
-            ex.printStackTrace();
-            throw new DalException("Could not get all songs from database", ex);
-        } finally {
-            connectionPool.checkIn(con);
+            String sql = "SELECT * FROM Song;";
+
+            Statement statement = databaseConnector.getConnection().createStatement();
+
+            if (statement.execute(sql)) {
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("Song_ID");
+                    String title = resultSet.getString("Title");
+                    String artist = resultSet.getString("Artist");
+                    String category = resultSet.getString("Category");
+                    String duration = resultSet.getString("Duration");
+                    Song song = new Song(id, title, artist, category, duration);
+                    getAllSongs.add(song);
+                }
+            }
         }
+        return getAllSongs;
     }
-}
+
+
+    }

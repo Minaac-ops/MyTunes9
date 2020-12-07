@@ -4,6 +4,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.dal.db.SongDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,7 +14,7 @@ public class DalController implements IMyTunes {
     private IMyTunes songrepo;
 
     public DalController() throws IOException, SQLServerException {
-        songrepo = new
+        songrepo = (IMyTunes) new SongDAO();
     }
 
     @Override

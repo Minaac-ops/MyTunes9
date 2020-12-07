@@ -14,7 +14,7 @@ public interface LogicFacade {
      * Gets a list of all songs.
      * @return a list of songs.
      */
-    public List<Song> getAllSongs() throws SQLException, DalException;
+    public List<Song> getAllSongs() throws SQLException, DalException, BllException;
 
     /**
      * Creates a new song.

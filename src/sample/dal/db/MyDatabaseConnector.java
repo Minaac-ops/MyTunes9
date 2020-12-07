@@ -31,7 +31,7 @@ public class MyDatabaseConnector {
         return dataSource.getConnection();
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         MyDatabaseConnector databaseConnector = new MyDatabaseConnector();
         Connection connection = databaseConnector.getConnection();
 

@@ -21,7 +21,7 @@ public class MyTunesManager implements LogicFacade {
     public MyTunesManager() throws BllException {
         try {
             dalfade = new DalController();
-        } catch (IOException ex)
+        } catch (IOException | SQLServerException ex)
         {
             throw new BllException("Could not connect to DAL layer.");
         }
@@ -34,11 +34,7 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public List<Song> getAllSongs() throws BllException {
-       try {
-           return dalfade.getAllSongs();
-       } catch (DalException ex) {
-           throw new BllException("Could not read all movies. Cause: " + ex.getMessage());
-       }
+        return dalfade.getAllSongs();
     }
 
     /**
