@@ -10,7 +10,10 @@ import java.util.List;
 
 public class DalController implements IMyTunes {
 
+    private IMyTunes songrepo;
+
     public DalController() throws IOException, SQLServerException {
+        songrepo = new
     }
 
     @Override

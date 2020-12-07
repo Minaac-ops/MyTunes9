@@ -3,7 +3,9 @@ package sample.bll;
 import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.dal.DalException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface LogicFacade {
@@ -12,7 +14,7 @@ public interface LogicFacade {
      * Gets a list of all songs.
      * @return a list of songs.
      */
-    public List<Song> getAllSongs();
+    public List<Song> getAllSongs() throws SQLException, DalException;
 
     /**
      * Creates a new song.

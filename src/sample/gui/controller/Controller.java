@@ -1,5 +1,6 @@
 package sample.gui.controller;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.be.Playlist;
@@ -7,6 +8,7 @@ import sample.be.Song;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
@@ -55,8 +57,7 @@ public class Controller {
     private TextField txtFilter;
 
 
-    public Controller()
-    {
+    public Controller() throws IOException, SQLServerException {
         songModel = new SongModel();
         playlistModel = new PlaylistModel();
 

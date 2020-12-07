@@ -1,12 +1,13 @@
 package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import sample.dal.ObjectPool;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class JDBCConnectionPool {
+public class JDBCConnectionPool extends ObjectPool<Connection> {
 
     private static JDBCConnectionPool INSTANCE;
     private final MyDatabaseConnector connectionProvider;

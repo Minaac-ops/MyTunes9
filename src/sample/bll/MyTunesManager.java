@@ -1,21 +1,44 @@
 package sample.bll;
 
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.dal.DalController;
+import sample.dal.DalException;
+import sample.dal.IMyTunes;
+import sample.dal.db.SongDAO;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class MyTunesManager implements LogicFacade {
+
+    private final IMyTunes dalfade;
+
+    public MyTunesManager() throws BllException {
+        try {
+            dalfade = new DalController();
+        } catch (IOException ex)
+        {
+            throw new BllException("Could not connect to DAL layer.");
+        }
+    }
+
     /**
      * Gets a list of all songs.
      *
      * @return a list of songs.
      */
     @Override
-    public List<Song> getAllSongs() {
-        return null;
+    public List<Song> getAllSongs() throws BllException {
+       try {
+           return dalfade.getAllSongs();
+       } catch (DalException ex) {
+           throw new BllException("Could not read all movies. Cause: " + ex.getMessage());
+       }
     }
 
     /**
