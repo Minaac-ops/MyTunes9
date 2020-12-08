@@ -28,7 +28,7 @@ public class DalController implements IMyTunes {
     }
 
     @Override
-    public void deleleMovie(Song song) {
+    public void deleleSong(Song song) {
 
     }
 
@@ -44,7 +44,9 @@ public class DalController implements IMyTunes {
 
     @Override
     public List<Song> getAllSongs() {
-        return null;
+        List<Song> allSongs;
+        allSongs = songrepo.getAllSongs();
+        return allSongs;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class DalController implements IMyTunes {
     }
 
     @Override
-    public Song getMovie(int id) {
+    public Song getSong(int id) {
         return null;
     }
 

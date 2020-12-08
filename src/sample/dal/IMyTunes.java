@@ -12,7 +12,7 @@ public interface IMyTunes {
 
     void updateSong(Song song);
 
-    void deleleMovie(Song song);
+    void deleleSong(Song song);
 
     void createGenre(Category category);
 
@@ -24,7 +24,7 @@ public interface IMyTunes {
 
     List<Category> getAllGenres();
 
-    Song getMovie(int id);
+    Song getSong(int id);
 
     List<Playlist> getPlaylist(Song song);
 

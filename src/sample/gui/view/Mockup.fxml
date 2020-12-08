@@ -12,7 +12,7 @@
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#handleNewSong" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.Controller">
     <children>
         <TreeTableView layoutX="26.0" layoutY="112.0" prefHeight="294.0" prefWidth="164.0">
             <columns>
@@ -26,9 +26,9 @@
                 <TreeTableColumn prefWidth="199.199951171875" text="Songs in playlist" />
             </columns>
         </TreeTableView>
-        <ButtonBar layoutX="497.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+        <ButtonBar layoutX="490.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
             <buttons>
-                <Button mnemonicParsing="false" text="New" />
+                <Button mnemonicParsing="false" text="New song!" />
                 <Button mnemonicParsing="false" text="Edit" />
                 <Button mnemonicParsing="false" text="Delete" />
             </buttons>
@@ -56,7 +56,7 @@
         <RadioButton layoutX="77.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" />
         <RadioButton layoutX="42.0" layoutY="35.0" mnemonicParsing="false" />
         <RadioButton layoutX="108.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" />
-      <TableView layoutX="497.0" layoutY="112.0" prefHeight="288.0" prefWidth="278.0">
+      <TableView fx:id="lstSongs" layoutX="497.0" layoutY="112.0" prefHeight="288.0" prefWidth="278.0">
         <columns>
           <TableColumn fx:id="songTitleColumn" prefWidth="74.39999389648438" text="Title" />
           <TableColumn fx:id="songArtistColumn" prefWidth="69.5999755859375" text="Artist" />

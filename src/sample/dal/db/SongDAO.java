@@ -25,7 +25,7 @@ public class SongDAO {
 
     public List<Song> getAllSongs() throws SQLException
     {
-        ArrayList<Song> getAllSongs = new ArrayList<>();
+        ArrayList<Song> allSongs = new ArrayList<>();
         Connection con = connectionPool.checkOut();
         try (Statement statement = con.createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT * FROM Songs;");
@@ -36,9 +36,9 @@ public class SongDAO {
                 String category = rs.getString("Category");
                 String duration = rs.getString("Duration");
                 Song song = new Song(id, title, artist, category, duration);
-                getAllSongs.add(song);
+                allSongs.add(song);
             }
-            return getAllSongs;
+            return allSongs;
         }
     }
 }

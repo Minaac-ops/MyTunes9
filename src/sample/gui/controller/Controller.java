@@ -1,14 +1,11 @@
 package sample.gui.controller;
 
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.be.Playlist;
 import sample.be.Song;
-import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
@@ -19,7 +16,6 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private SongModel songModel;
-    private PlaylistModel playlistModel;
     private ObservableList<Song> observableListSong;
 
     @FXML

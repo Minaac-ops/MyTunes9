@@ -16,7 +16,7 @@ public class SongModel {
     private LogicFacade logiclayer;
 
     public SongModel() throws SQLException, IOException {
-        logiclayer = new MyTunesManager();
+        logiclayer = (LogicFacade) new MyTunesManager();
     }
 
     public ObservableList<Song> getAllSongs() throws SQLException {
