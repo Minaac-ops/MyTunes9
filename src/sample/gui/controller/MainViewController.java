@@ -1,10 +1,16 @@
 package sample.gui.controller;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import sample.be.Song;
 import sample.gui.model.SongModel;
 
@@ -13,7 +19,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class MainViewController implements Initializable {
 
     private SongModel songModel;
     private ObservableList<Song> observableListSong;
@@ -30,7 +36,7 @@ public class Controller implements Initializable {
     private TableColumn<Song, String> songTimeColumn;
 
 
-    public Controller() throws IOException, SQLException {
+    public MainViewController() throws IOException, SQLException {
             songModel = new SongModel();
     }
 
@@ -56,6 +62,16 @@ public class Controller implements Initializable {
         songTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Duration"));
 
         lstSongs.setItems(observableListSong);
+    }
 
+    @FXML
+    public void newSongbtn(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewSong.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage window = new Stage();
+
+        window.setScene(scene);
+        window.show();
     }
 }

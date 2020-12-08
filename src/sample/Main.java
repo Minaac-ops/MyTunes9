@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.awt.event.ActionEvent;
 
 
-public final class Main extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -19,18 +19,8 @@ public final class Main extends Application {
         stage.show();
     }
 
-    private void setUpScenes(int whichScene, boolean isEditing)
-    {
-        Parent mockup;
-    }
-
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    private void handleNewSong(ActionEvent event)
-    {
-
     }
 }
