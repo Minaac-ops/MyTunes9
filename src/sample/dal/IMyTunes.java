@@ -12,7 +12,7 @@ public interface IMyTunes {
 
     void updateSong(Song song);
 
-    void deleleSong(Song song);
+    void deleteSong(Song song);
 
     void deleteSong(Song song);
 
