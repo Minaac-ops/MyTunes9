@@ -9,9 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sample.be.Playlist;
 import sample.be.Song;
+import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
@@ -21,9 +25,13 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
+
+
     private SongModel songModel;
     private ObservableList<Song> observableListSong;
 
+    private PlaylistModel playlistModel;
+    private ObservableList<Playlist> observableListPlaylist;
     @FXML
     private TableView<Song> lstSongs;
     @FXML
@@ -34,10 +42,19 @@ public class MainViewController implements Initializable {
     private TableColumn<Song, String> categoryColumn;
     @FXML
     private TableColumn<Song, String> songTimeColumn;
+    @FXML
+    private TableView lstPlaylist;
+    @FXML
+    private TableColumn<Playlist, Integer> PlaylistTitleColumn;
+    @FXML
+    private TableColumn<Playlist, String> PlaylistSongColumn;
+    //@FXML
+    //private TableColumn<Playlist, String> PlaylistTimeColumn;
 
 
     public MainViewController() throws IOException, SQLException {
             songModel = new SongModel();
+            playlistModel = new PlaylistModel();
     }
 
 
@@ -52,6 +69,7 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            observableListPlaylist = playlistModel.getPlaylists();
             observableListSong = songModel.getAllSongs();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -61,7 +79,19 @@ public class MainViewController implements Initializable {
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("Category"));
         songTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Duration"));
 
+
         lstSongs.setItems(observableListSong);
+
+        try {
+            observableListPlaylist = playlistModel.getPlaylists();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        PlaylistTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        PlaylistSongColumn.setCellValueFactory(new PropertyValueFactory<>("songs"));
+       // PlaylistTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        lstPlaylist.setItems(observableListPlaylist);
     }
 
     @FXML

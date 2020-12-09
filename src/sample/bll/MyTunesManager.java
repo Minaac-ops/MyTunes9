@@ -7,7 +7,9 @@ import sample.be.Playlist;
 import sample.be.Song;
 import sample.dal.DalController;
 import sample.dal.IMyTunes;
+import sample.dal.db.PlaylistDAO;
 import sample.dal.db.SongDAO;
+import sample.gui.model.SongModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,9 +18,11 @@ import java.util.List;
 public class MyTunesManager implements LogicFacade {
 
     private final SongDAO songDAO;
+    private PlaylistDAO playlistDAO;
 
     public MyTunesManager() throws IOException, SQLServerException {
             songDAO = new SongDAO();
+            playlistDAO = new PlaylistDAO();
     }
 
     /**
@@ -90,8 +94,9 @@ public class MyTunesManager implements LogicFacade {
      * @return a list of all songs.
      */
     @Override
-    public List<Playlist> getAllPlayLists() {
-        return null;
+    public List<Playlist> getAllPlayLists() throws SQLException {
+
+        return playlistDAO.getAllPlayLists();
     }
 
     /**

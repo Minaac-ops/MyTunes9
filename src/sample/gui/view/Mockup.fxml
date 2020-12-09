@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.MainViewController">
-    <TreeTableView layoutX="26.0" layoutY="112.0" prefHeight="294.0" prefWidth="164.0">
-        <columns>
-            <TreeTableColumn prefWidth="54.39999580383301" text="Name" />
-            <TreeTableColumn prefWidth="55.99999237060547" text="Songs" />
-            <TreeTableColumn prefWidth="53.5999755859375" text="Time" />
-        </columns>
-    </TreeTableView>
     <TreeTableView layoutX="222.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
         <columns>
             <TreeTableColumn prefWidth="199.199951171875" text="Songs in playlist" />
@@ -52,6 +36,13 @@
        <TableColumn fx:id="songArtistColumn" prefWidth="76.0" text="Artist" />
          <TableColumn fx:id="categoryColumn" prefWidth="69.5999755859375" text="Category" />
          <TableColumn fx:id="songTimeColumn" prefWidth="67.199951171875" text="Duration" />
+     </columns>
+   </TableView>
+   <TableView layoutX="15.0" layoutY="112.0" prefHeight="294.0" prefWidth="173.0">
+     <columns>
+       <TableColumn fx:id="PlaylistTitleColumn" prefWidth="45.20001411437988" text="Name" />
+       <TableColumn fx:id="PlaylistSongColumn" prefWidth="71.5999984741211" text="Songs" />
+         <TableColumn fx:id="PlaylistTimeColumn" prefWidth="54.0" text="Time" />
      </columns>
    </TableView>
 </AnchorPane>

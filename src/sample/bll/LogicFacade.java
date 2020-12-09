@@ -56,7 +56,7 @@ public interface LogicFacade {
      * Gets a list og all songs.
      * @return a list of all songs.
      */
-    public List<Playlist> getAllPlayLists();
+    public List<Playlist> getAllPlayLists() throws SQLException;
 
     /**
      * Creates a new playlist.

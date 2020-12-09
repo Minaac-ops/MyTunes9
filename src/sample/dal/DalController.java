@@ -28,6 +28,11 @@ public class DalController implements IMyTunes {
     }
 
     @Override
+    public void deleleSong(Song song) {
+
+    }
+
+    @Override
     public void deleteSong(Song song) {
 
     }

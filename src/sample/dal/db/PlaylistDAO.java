@@ -32,10 +32,10 @@ public class PlaylistDAO {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("PL_ID");
                     String name = resultSet.getString("Name");
-                    int songCount = resultSet.getInt("Songs");
-                    String totalTime = resultSet.getString("Time");
+                   // int songCount = resultSet.getInt("Songs");
+                   // String totalTime = resultSet.getString("Time");
 
-                    Playlist playlist = new Playlist(name, songCount, totalTime, id);
+                    Playlist playlist = new Playlist(name, id);
                     allPlayLists.add(playlist);
                 }
             }
