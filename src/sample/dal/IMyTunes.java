@@ -14,8 +14,6 @@ public interface IMyTunes {
 
     void deleteSong(Song song);
 
-    void deleteSong(Song song);
-
     void createGenre(Category category);
 
     void deleteGenre(Category category);
