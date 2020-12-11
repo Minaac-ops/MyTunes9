@@ -4,7 +4,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
-import sample.bll.util.SongSearcher;
 import sample.dal.db.SongDAO;
 
 import java.io.IOException;
@@ -34,6 +33,11 @@ public class DalController implements IMyTunes {
 =======
 >>>>>>> e336e2937c2f497f621c34b1becdd67703413206
     @Override
+    public void deleleSong(Song song) {
+
+    }
+
+    @Override
     public void deleteSong(Song song) {
 
     }
@@ -53,19 +57,6 @@ public class DalController implements IMyTunes {
         List<Song> allSongs;
         allSongs = songrepo.getAllSongs();
         return allSongs;
-    }
-
-    /**
-     * Searches for all songs that matches the given query somehow.
-     *
-     * @param query The search query.
-     * @return A list of songs that matches the query.
-     */
-    @Override
-    public List<Song> searchSong(String query) {
-       List<Song> allSongs = getAllSongs();
-       allSongs = SongSearcher.search(allSongs, query);
-       return allSongs;
     }
 
     @Override

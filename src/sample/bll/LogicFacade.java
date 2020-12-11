@@ -46,10 +46,11 @@ public interface LogicFacade {
 
     /**
      * Search for all songs that matches the search.
-     * @param query
+     * @param items
+     * @param text
      * @return A list of the songs that matches the search.
      */
-    List<Song> searchSongs(String query) throws SQLException;
+    public ObservableList<Song> search(ObservableList<Song> items, String text);
 
     /**
      * Gets a list og all songs.
@@ -64,6 +65,11 @@ public interface LogicFacade {
      */
     public Playlist createPlaylist(String name);
 
+    /**
+     *
+     * @return List of all playlists.
+     */
+    public List<Playlist> getAllPlaylists();
 
     /**
      * Deletes the chosen playlist.
