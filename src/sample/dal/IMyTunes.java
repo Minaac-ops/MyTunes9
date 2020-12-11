@@ -13,8 +13,11 @@ public interface IMyTunes {
     void updateSong(Song song);
 
     void deleleSong(Song song);
+<<<<<<< HEAD
 
     void deleteSong(Song song);
+=======
+>>>>>>> parent of e30ce0b... jj
 
     void createGenre(Category category);
 
