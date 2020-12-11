@@ -26,13 +26,12 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
 
 
+
     private SongModel songModel;
     private ObservableList<Song> observableListSong;
 
     private PlaylistModel playlistModel;
     private ObservableList<Playlist> observableListPlaylist;
-
-
     @FXML
     private TableView<Song> lstSongs;
     @FXML
@@ -46,18 +45,11 @@ public class MainViewController implements Initializable {
     @FXML
     private TableView lstPlaylist;
     @FXML
-    private TableColumn<Playlist, String> PlaylistTitleColumn;
+    private TableColumn<Playlist, Integer> PlaylistTitleColumn;
     @FXML
-    private TableColumn<Playlist, Integer> PlaylistSongColumn;
+    private TableColumn<Playlist, String> PlaylistSongColumn;
     //@FXML
     //private TableColumn<Playlist, String> PlaylistTimeColumn;
-
-
-
-    public TableView Pl_Song_Table;
-    public TableColumn <Playlist, Integer>Pl_Song_Nr;
-    public TableColumn <Playlist, String> PlSongName;
-
 
 
     public MainViewController() throws IOException, SQLException {
@@ -97,23 +89,10 @@ public class MainViewController implements Initializable {
             throwables.printStackTrace();
         }
         PlaylistTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        PlaylistSongColumn.setCellValueFactory(new PropertyValueFactory<>("Song"));
+        PlaylistSongColumn.setCellValueFactory(new PropertyValueFactory<>("songs"));
        // PlaylistTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
         lstPlaylist.setItems(observableListPlaylist);
-
-
-
-        try {
-            observableListPlaylist = playlistModel.getPlaylists();
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        Pl_Song_Nr.setCellValueFactory(new PropertyValueFactory<>("Song Nr"));
-        PlSongName.setCellValueFactory(new PropertyValueFactory<>("Song Name"));
-        Pl_Song_Table.setItems((observableListPlaylist));
     }
-
 
     @FXML
     public void newSongbtn(ActionEvent event) throws IOException {

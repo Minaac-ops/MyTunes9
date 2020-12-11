@@ -8,7 +8,7 @@ public class Playlist {
     private String name;
     // private int songCount;
     // private String totalTime;
-    private int id;
+    private final int id;
 
     public Playlist(String name, int id) {
         this.name = name;
@@ -45,7 +45,7 @@ public class Playlist {
         //  this.totalTime = totalTime;
     }
 
-    public int getId() {
+    private final int getId() {
         return id;
     }
 

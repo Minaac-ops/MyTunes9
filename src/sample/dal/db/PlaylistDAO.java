@@ -30,9 +30,8 @@ public class PlaylistDAO {
             if (statement.execute(sql)) {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()) {
-
+                    int id = resultSet.getInt("PL_ID");
                     String name = resultSet.getString("Name");
-                    Integer id = resultSet.getInt("PL_ID");
                    // int songCount = resultSet.getInt("Songs");
                    // String totalTime = resultSet.getString("Time");
 
@@ -42,8 +41,4 @@ public class PlaylistDAO {
             }
         } return allPlayLists;
     }
-
-
-
-
 }

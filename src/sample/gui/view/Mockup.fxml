@@ -4,6 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.MainViewController">
+    <TreeTableView layoutX="222.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
+        <columns>
+            <TreeTableColumn prefWidth="199.199951171875" text="Songs in playlist" />
+        </columns>
+    </TreeTableView>
     <ButtonBar layoutX="332.0" layoutY="406.0" prefHeight="40.0" prefWidth="92.0">
         <buttons>
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Button" />
@@ -33,17 +38,11 @@
          <TableColumn fx:id="songTimeColumn" prefWidth="67.199951171875" text="Duration" />
      </columns>
    </TableView>
-   <TableView fx:id="lstPlaylist" layoutX="15.0" layoutY="112.0" prefHeight="294.0" prefWidth="173.0">
+   <TableView layoutX="15.0" layoutY="112.0" prefHeight="294.0" prefWidth="173.0">
      <columns>
        <TableColumn fx:id="PlaylistTitleColumn" prefWidth="45.20001411437988" text="Name" />
-       <TableColumn fx:id="PlaylistSongColumn" prefWidth="71.5999984741211" text="Song" />
+       <TableColumn fx:id="PlaylistSongColumn" prefWidth="71.5999984741211" text="Songs" />
          <TableColumn fx:id="PlaylistTimeColumn" prefWidth="54.0" text="Time" />
-     </columns>
-   </TableView>
-   <TableView fx:id="Pl_Song_Table" layoutX="224.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
-     <columns>
-       <TableColumn fx:id="Pl_Song_Nr" prefWidth="75.0" text="Song nr" />
-       <TableColumn fx:id="PlSongName" prefWidth="75.0" text="Song Name" />
      </columns>
    </TableView>
 </AnchorPane>
