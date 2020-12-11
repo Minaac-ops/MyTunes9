@@ -15,20 +15,23 @@ import sample.be.Song;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
 
+    public TableColumn PlaylistTimeColumn;
+    public TextField txtSongSearch;
     private SongModel songModel;
     private ObservableList<Song> observableListSong;
 
     private PlaylistModel playlistModel;
     private ObservableList<Playlist> observableListPlaylist;
+    private List<Song> Newsong;
 
 
     @FXML
@@ -41,8 +44,6 @@ public class MainViewController implements Initializable {
     private TableColumn<Song, String> categoryColumn;
     @FXML
     private TableColumn<Song, String> songTimeColumn;
-    @FXML
-    private TextField txtSongSearch;
     @FXML
     private TableView lstPlaylist;
     @FXML
@@ -77,6 +78,7 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            observableListPlaylist = playlistModel.getPlaylists();
             observableListSong = songModel.getAllSongs();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -96,18 +98,14 @@ public class MainViewController implements Initializable {
             throwables.printStackTrace();
         }
         PlaylistTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-<<<<<<< HEAD
         PlaylistSongColumn.setCellValueFactory(new PropertyValueFactory<>("Song"));
-=======
-        //PlaylistSongColumn.setCellValueFactory(new PropertyValueFactory<>("Songs"));
->>>>>>> e336e2937c2f497f621c34b1becdd67703413206
        // PlaylistTimeColumn.setCellValueFactory(new PropertyValueFactory<>("Time"));
         lstPlaylist.setItems(observableListPlaylist);
 
 
 
         try {
-            observableListPlaylist = playlistModel.getPlaylists();
+             observableListPlaylist= playlistModel.getPlaylists();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -141,13 +139,6 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void handleSearchSongs(ActionEvent event) throws SQLException {
-        String query = txtSongSearch.getText().trim();
-        songModel.searchSongs(query);
-
-    }
-
-    @FXML
     public void newPlaylistbtn(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
         Scene scene = new Scene(root);
@@ -167,5 +158,8 @@ public class MainViewController implements Initializable {
 
         window.setScene(scene);
         window.show();
+    }
+
+    public void handleSearchSongs(ActionEvent actionEvent) {
     }
 }

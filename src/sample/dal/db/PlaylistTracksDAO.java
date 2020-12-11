@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistTracksDAO<Songlist> {
+public class PlaylistTracksDAO{
 
     private MyDatabaseConnector myDatabaseConnector;
 
@@ -22,8 +22,8 @@ public class PlaylistTracksDAO<Songlist> {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 
-    public List<Songlist> getPlaylistSongs() throws SQLException {
-        ArrayList<Songlist> NewSongList = new ArrayList<>();
+    public List<Song> getPlaylistSongs() throws SQLException {
+    ArrayList<Song> NewSongList = new ArrayList();
 
         try (Connection connection = myDatabaseConnector.getConnection()) {
             String sql = "SELECT * FROM Playlist INNER JOIN ON Playlist_track.Song_ID=Song.Song_ID WHERE Playlist_track.Playlist_ID=?";
@@ -33,13 +33,15 @@ public class PlaylistTracksDAO<Songlist> {
                 ResultSet resultSet = statement.getResultSet();
                 while (resultSet.next()) {
 
-                    int id = resultSet.getInt("SongID");
-                    String name = resultSet.getString("Title");
-                    Songlist songlist = new Songlist(name,id);
-                    NewSongList.add(songlist);
+                    Integer id = resultSet.getInt("Song_ID");
+                    String Title = resultSet.getString("Title");
+                    Song son = new Song(id,Title);
+                    NewSongList.add(son);
                 }
+                return NewSongList;
+
             }
-        }
-        return NewSongList;
+        } return null;
+
     }
 }
