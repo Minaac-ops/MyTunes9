@@ -18,10 +18,6 @@ public class Song {
         this.duration = duration;
     }
 
-
-    public Song(Integer id, String title) {
-    }
-
     public int getId()
     {
         return id;
