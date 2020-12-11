@@ -144,26 +144,4 @@ public class MainViewController implements Initializable {
         window.setScene(scene);
         window.show();
     }
-
-    @FXML
-    public void newPlaylistbtn(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
-        Scene scene = new Scene(root);
-
-        Stage window = new Stage();
-
-        window.setScene(scene);
-        window.show();
-    }
-
-    @FXML
-    public void editPlaylistbtn(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
-        Scene scene = new Scene(root);
-
-        Stage window = new Stage();
-
-        window.setScene(scene);
-        window.show();
-    }
 }
