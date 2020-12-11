@@ -20,13 +20,6 @@ public interface IMyTunes {
 
     List<Song> getAllSongs();
 
-    /**
-     * Searches for all songs that matches the given query somehow.
-     * @param query The search query.
-     * @return A list of songs that matches the query.
-     */
-    List<Song> searchSong(String query);
-
     List<Playlist> getAllPlaylists();
 
     List<Category> getAllGenres();

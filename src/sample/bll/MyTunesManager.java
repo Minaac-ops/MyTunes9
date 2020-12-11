@@ -5,7 +5,6 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
-import sample.bll.util.SongSearcher;
 import sample.dal.DalController;
 import sample.dal.IMyTunes;
 import sample.dal.db.PlaylistDAO;
@@ -80,21 +79,19 @@ public class MyTunesManager implements LogicFacade {
     /**
      * Search for all songs that matches the search.
      *
-     * @param query
+     * @param items
+     * @param text
      * @return A list of the songs that matches the search.
      */
     @Override
-    public List<Song> searchSongs(String query) throws SQLException {
-        List<Song> allSongs = getAllSongs();
-        allSongs = SongSearcher.search(allSongs, query);
-        return allSongs;
+    public ObservableList<Song> search(ObservableList<Song> items, String text) {
+        return null;
     }
 
-
     /**
-     * Gets a list og all playlists.
+     * Gets a list og all songs.
      *
-     * @return a list of all playlists.
+     * @return a list of all songs.
      */
     @Override
     public List<Playlist> getAllPlayLists() throws SQLException {
@@ -113,6 +110,13 @@ public class MyTunesManager implements LogicFacade {
         return null;
     }
 
+    /**
+     * @return List of all playlists.
+     */
+    @Override
+    public List<Playlist> getAllPlaylists() {
+        return null;
+    }
 
     /**
      * Deletes the chosen playlist.
