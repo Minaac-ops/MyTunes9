@@ -1,72 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.MainViewController">
-    <ButtonBar layoutX="332.0" layoutY="406.0" prefHeight="40.0" prefWidth="92.0">
-        <buttons>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Button" />
-        </buttons>
-    </ButtonBar>
-    <Button layoutX="134.0" layoutY="413.0" minWidth="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="57.0" text="Delete" />
-    <Button layoutX="18.0" layoutY="413.0" minWidth="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Edit" />
-    <Button layoutX="76.0" layoutY="413.0" minWidth="43.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" text="New" />
-    <ButtonBar layoutX="8.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-            <Button minWidth="46.0" mnemonicParsing="false" prefHeight="26.0" text="Delete" />
-        </buttons>
-    </ButtonBar>
-    <Button layoutX="446.0" layoutY="134.0" mnemonicParsing="false" text="&lt;" />
-    <TextArea layoutX="566.0" layoutY="25.0" prefHeight="14.0" prefWidth="138.0" />
-    <Button layoutX="712.0" layoutY="25.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" text="Filter" />
-    <Label layoutX="522.0" layoutY="25.0" prefHeight="38.0" prefWidth="43.0" text="Filter:" />
-    <Button layoutX="282.0" layoutY="413.0" minWidth="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
-    <Button layoutX="244.0" layoutY="414.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
-    <Slider layoutX="43.0" layoutY="63.0" prefHeight="14.0" prefWidth="84.0" />
-    <RadioButton layoutX="77.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" />
-    <RadioButton layoutX="42.0" layoutY="35.0" mnemonicParsing="false" />
-    <RadioButton layoutX="108.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" />
-    <TableView fx:id="lstSongs" layoutX="497.0" layoutY="112.0" prefHeight="288.0" prefWidth="278.0">
-      <columns>
-          <TableColumn fx:id="songTitleColumn" prefWidth="74.39999389648438" text="Title" />
-          <TableColumn fx:id="songArtistColumn" prefWidth="69.5999755859375" text="Artist" />
-          <TableColumn fx:id="categoryColumn" prefWidth="66.39990234375" text="Category" />
-          <TableColumn fx:id="songTimeColumn" prefWidth="67.19992675781248" text="Duration" />
-      </columns>
-    </TableView>
-    <Button layoutX="497.0" layoutY="413.0" mnemonicParsing="false" onAction="#newSongbtn" text="New song!" />
-    <Button layoutX="635.0" layoutY="414.0" mnemonicParsing="false" text="Delete" />
-    <Button layoutX="578.0" layoutY="413.0" mnemonicParsing="false" onAction="#editSongbtn" text="Edit" />
-<<<<<<< HEAD
-   <TableView fx:id="lstSongs" layoutX="478.0" layoutY="112.0" prefHeight="294.0" prefWidth="304.0">
-     <columns>
-       <TableColumn fx:id="songTitleColumn" prefWidth="91.19998168945312" text="Title" />
-       <TableColumn fx:id="songArtistColumn" prefWidth="76.0" text="Artist" />
-         <TableColumn fx:id="categoryColumn" prefWidth="69.5999755859375" text="Category" />
-         <TableColumn fx:id="songTimeColumn" prefWidth="67.199951171875" text="Duration" />
-     </columns>
-   </TableView>
-   <TableView layoutX="15.0" layoutY="112.0" prefHeight="294.0" prefWidth="173.0">
-     <columns>
-       <TableColumn fx:id="PlaylistTitleColumn" prefWidth="45.20001411437988" text="Name" />
-       <TableColumn fx:id="PlaylistSongColumn" prefWidth="71.5999984741211" text="Song" />
-         <TableColumn fx:id="PlaylistTimeColumn" prefWidth="54.0" text="Time" />
-     </columns>
-   </TableView>
-<<<<<<< HEAD
-<<<<<<< HEAD
-   <TableView fx:id="Pl_Song_Table" layoutX="224.0" layoutY="112.0" prefHeight="294.0" prefWidth="200.0">
-     <columns>
-       <TableColumn fx:id="Pl_Song_Nr" prefWidth="75.0" text="Song nr" />
-       <TableColumn fx:id="PlSongName" prefWidth="75.0" text="Song Name" />
-     </columns>
-   </TableView>
-=======
-   <TextField fx:id="txtSongSearch" layoutX="561.0" layoutY="32.0" />
->>>>>>> e336e2937c2f497f621c34b1becdd67703413206
-=======
->>>>>>> parent of e336e29... songsearcher
-=======
->>>>>>> parent of 8a99d2a... playlistbuttons
+    <children>
+        <ButtonBar layoutX="497.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <Button mnemonicParsing="false" onAction="#newSongbtn" text="New" />
+                <Button mnemonicParsing="false" onAction="#editSongbtn" text="Edit" />
+                <Button mnemonicParsing="false" text="Delete" />
+            </buttons>
+        </ButtonBar>
+        <ButtonBar layoutX="332.0" layoutY="406.0" prefHeight="40.0" prefWidth="92.0">
+            <buttons>
+                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Button" />
+            </buttons>
+        </ButtonBar>
+        <Button layoutX="134.0" layoutY="413.0" minWidth="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="57.0" text="Delete" />
+        <Button layoutX="18.0" layoutY="413.0" minWidth="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Edit" />
+        <Button layoutX="76.0" layoutY="413.0" minWidth="43.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="43.0" text="New" />
+        <ButtonBar layoutX="8.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <Button minWidth="46.0" mnemonicParsing="false" prefHeight="26.0" text="Delete" />
+            </buttons>
+        </ButtonBar>
+        <Button layoutX="446.0" layoutY="134.0" mnemonicParsing="false" text="&lt;" />
+        <Button layoutX="712.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleSearchSongs" prefHeight="38.0" prefWidth="52.0" text="Filter" />
+        <Label layoutX="522.0" layoutY="25.0" prefHeight="38.0" prefWidth="43.0" text="Filter:" />
+        <Button layoutX="282.0" layoutY="413.0" minWidth="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
+        <Button layoutX="244.0" layoutY="414.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
+        <Slider layoutX="43.0" layoutY="63.0" prefHeight="14.0" prefWidth="84.0" />
+        <RadioButton layoutX="77.0" layoutY="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="16.0" />
+        <RadioButton layoutX="42.0" layoutY="35.0" mnemonicParsing="false" />
+        <RadioButton layoutX="108.0" layoutY="23.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="30.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <TableView fx:id="lstPlaylist" layoutX="20.0" layoutY="105.0" prefHeight="294.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="playlistNameColumn" prefWidth="60.79998588562012" text="Name" />
+          <TableColumn fx:id="playlistTimeColumn" prefWidth="76.79999542236328" text="Songs" />
+            <TableColumn fx:id="playlistCount" prefWidth="61.600006103515625" text="Time" />
+        </columns>
+      </TableView>
+      <TableView fx:id="lstSongsInPlayList" layoutX="244.0" layoutY="105.0" prefHeight="294.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="idOnSongPlay" prefWidth="75.0" text="Number" />
+          <TableColumn fx:id="nameOnSongPlay" prefWidth="75.0" text="Name" />
+        </columns>
+      </TableView>
+      <TableView fx:id="lstSongs" layoutX="478.0" layoutY="105.0" prefHeight="294.0" prefWidth="307.0">
+        <columns>
+          <TableColumn fx:id="songTitleColumn" prefWidth="75.0" text="Title" />
+          <TableColumn fx:id="songArtistColumn" prefWidth="75.0" text="Artist" />
+            <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="Category" />
+            <TableColumn fx:id="songTimeColumn" prefWidth="80.79997558593749" text="Time" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtSongSearch" layoutX="557.0" layoutY="32.0" />
+    </children>
 </AnchorPane>

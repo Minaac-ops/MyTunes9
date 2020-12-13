@@ -30,12 +30,13 @@ public class SongDAO {
         try (Statement statement = con.createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT * FROM Songs;");
             while (rs.next()) {
-                int id = rs.getInt("Song_ID");
+                int id = rs.getInt("ID_Song");
                 String title = rs.getString("Title");
                 String artist = rs.getString("Artist");
                 String category = rs.getString("Category");
-                String duration = rs.getString("Duration");
-                Song song = new Song(id, title, artist, category, duration);
+                int duration = rs.getInt("Time");
+                String path = rs.getString("url");
+                Song song = new Song(id, title, artist, category, duration, path);
                 allSongs.add(song);
             }
             return allSongs;

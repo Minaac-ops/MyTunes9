@@ -6,14 +6,14 @@ public class Playlist {
 
     private List<Song> songList; //List of songs in the playlist
     private String name;
-    // private int songCount;
-    // private String totalTime;
-    private int id;
+    private int songCount;
+    private int totalTime;
+    private final int id;
 
-    public Playlist(String name, int id) {
+    public Playlist(String name, int id, int totalTime, int songCount) {
         this.name = name;
-        //this.songCount = songCount;
-        // this.totalTime = totalTime;
+        this.songCount = songCount;
+        this.totalTime = totalTime;
         this.id = id;
     }
 
@@ -25,35 +25,35 @@ public class Playlist {
         this.name = name;
     }
 
-    //  public int getSongCount()
+    public int getSongCount()
     {
-        //  return songCount;
+        return songCount;
     }
 
-    //  public void setSongCount(int songCount)
+    public void setSongCount(int songCount)
     {
-        //  this.songCount = songCount;
+        this.songCount = songCount;
     }
 
-    //  public String getTotalTime()
+    public int getTotalTime()
     {
-        //  return totalTime;
+        return totalTime;
     }
 
-    // public void setTotalTime(String totalTime)
+    public void setTotalTime(int totalTime)
     {
-        //  this.totalTime = totalTime;
+        this.totalTime = totalTime;
     }
 
     public int getId() {
         return id;
     }
 
-    private List<Song> getSongList() {
+    public List<Song> getSongList() {
         return songList;
     }
 
-    private void setSongList(List<Song> songList) {
+    public void setSongList(List<Song> songList) {
         this.songList = songList;
     }
 

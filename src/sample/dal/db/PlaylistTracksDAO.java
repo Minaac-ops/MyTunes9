@@ -1,7 +1,6 @@
 package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import javafx.scene.chart.ScatterChart;
 import sample.be.Playlist;
 import sample.be.Song;
 
@@ -13,33 +12,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistTracksDAO<Songlist> {
+public class PlaylistTracksDAO {
 
-    private MyDatabaseConnector myDatabaseConnector;
+    private MyDatabaseConnector databaseConnector;
+
+    private final JDBCConnectionPool connectionPool;
 
     public PlaylistTracksDAO() throws IOException, SQLServerException {
-
-        myDatabaseConnector = new MyDatabaseConnector();
+        connectionPool = JDBCConnectionPool.getInstance();
     }
 
-    public List<Songlist> getPlaylistSongs() throws SQLException {
-        ArrayList<Songlist> NewSongList = new ArrayList<>();
-
-        try (Connection connection = myDatabaseConnector.getConnection()) {
-            String sql = "SELECT * FROM Playlist INNER JOIN ON Playlist_track.Song_ID=Song.Song_ID WHERE Playlist_track.Playlist_ID=?";
-            Statement statement = connection.createStatement();
-
-            if (statement.execute(sql)) {
-                ResultSet resultSet = statement.getResultSet();
-                while (resultSet.next()) {
-
-                    int id = resultSet.getInt("SongID");
-                    String name = resultSet.getString("Title");
-                    Songlist songlist = new Songlist(name,id);
-                    NewSongList.add(songlist);
-                }
+    public List<Song> getPlaylistSongs(int id) throws SQLException {
+        List<Song> newSongList = new ArrayList();
+        Connection con = connectionPool.checkOut();
+        try (Statement statement = con.createStatement()) {
+            ResultSet rs = statement.executeQuery("SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song;");
+            while (rs.next()) {
+                Song son = new Song(rs.getInt("IDSong"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));
+                newSongList.add(son);
             }
-        }
-        return NewSongList;
+        } return newSongList;
     }
 }

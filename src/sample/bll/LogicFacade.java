@@ -13,7 +13,7 @@ public interface LogicFacade {
      * Gets a list of all songs.
      * @return a list of songs.
      */
-    public List<Song> getAllSongs() throws SQLException;
+    List<Song> getAllSongs() throws SQLException;
 
     /**
      * Creates a new song.
@@ -24,7 +24,7 @@ public interface LogicFacade {
      * @param duration
      * @return The new song.
      */
-    public Song createSong(int id, String songTitle, String artist, String category, String duration);
+    public Song createSong(int id, String songTitle, String artist, String category, int duration, String path);
 
     /**
      * Deletes a song.
@@ -42,21 +42,13 @@ public interface LogicFacade {
      * @param duration
      * @return The updated song.
      */
-    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, String duration);
-
-    /**
-     * Search for all songs that matches the search.
-     * @param items
-     * @param text
-     * @return A list of the songs that matches the search.
-     */
-    public ObservableList<Song> search(ObservableList<Song> items, String text);
+    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, int duration);
 
     /**
      * Gets a list og all songs.
      * @return a list of all songs.
      */
-    public List<Playlist> getAllPlayLists() throws SQLException;
+    List<Playlist> getAllPlayLists() throws SQLException;
 
     /**
      * Creates a new playlist.
@@ -98,6 +90,13 @@ public interface LogicFacade {
      * @return
      */
     public List<String> getAllCategories();
+
+    /**
+     * Search for all Songs that matches the search.
+     * @param query
+     * @return
+     */
+    List<Song> searchSong(String query) throws SQLException;
 
 
 }

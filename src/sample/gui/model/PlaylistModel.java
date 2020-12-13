@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class PlaylistModel {
-    private ObservableList<Playlist> playlists = FXCollections.observableArrayList();
+    private ObservableList<Playlist> playlists;
     private LogicFacade logiclayer;
 
     public PlaylistModel() throws SQLException, IOException{

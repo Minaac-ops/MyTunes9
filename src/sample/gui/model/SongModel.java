@@ -17,6 +17,7 @@ import sample.bll.MyTunesManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SongModel {
 
@@ -32,5 +33,14 @@ public class SongModel {
         allSongs = FXCollections.observableArrayList();
         allSongs.addAll(logiclayer.getAllSongs());
         return allSongs;
+    }
+
+    public void serchSongs(String query) throws SQLException {
+        if (query != null)
+        {
+            List<Song> searchedSongs = logiclayer.searchSong(query);
+            allSongs.clear();
+            allSongs.addAll(searchedSongs);
+        }
     }
 }

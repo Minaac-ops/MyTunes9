@@ -5,6 +5,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.bll.util.SongSearcher;
 import sample.dal.DalController;
 import sample.dal.IMyTunes;
 import sample.dal.db.PlaylistDAO;
@@ -46,7 +47,7 @@ public class MyTunesManager implements LogicFacade {
      * @return The new song.
      */
     @Override
-    public Song createSong(int id, String songTitle, String artist, String category, String duration) {
+    public Song createSong(int id, String songTitle, String artist, String category, int duration, String path) {
         return null;
     }
 
@@ -72,19 +73,7 @@ public class MyTunesManager implements LogicFacade {
      * @return The updated song.
      */
     @Override
-    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, String duration) {
-        return null;
-    }
-
-    /**
-     * Search for all songs that matches the search.
-     *
-     * @param items
-     * @param text
-     * @return A list of the songs that matches the search.
-     */
-    @Override
-    public ObservableList<Song> search(ObservableList<Song> items, String text) {
+    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, int duration) {
         return null;
     }
 
@@ -160,5 +149,18 @@ public class MyTunesManager implements LogicFacade {
     @Override
     public List<String> getAllCategories() {
         return null;
+    }
+
+    /**
+     * Search for all Songs that matches the search.
+     *
+     * @param query
+     * @return
+     */
+    @Override
+    public List<Song> searchSong(String query) throws SQLException {
+        List<Song> allSongs = getAllSongs();
+        allSongs = SongSearcher.search(allSongs, query);
+        return allSongs;
     }
 }

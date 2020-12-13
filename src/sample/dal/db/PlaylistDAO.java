@@ -2,7 +2,9 @@ package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Playlist;
+import sample.be.Song;
 
+import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,37 +15,39 @@ import java.util.List;
 
 public class PlaylistDAO {
 
-    private MyDatabaseConnector myDatabaseConnector;
+    PlaylistTracksDAO playlistTracksDAO = new PlaylistTracksDAO();
+
+    private final JDBCConnectionPool connectionPool;
 
     public PlaylistDAO() throws IOException, SQLServerException {
-        myDatabaseConnector = new MyDatabaseConnector();
+        connectionPool = JDBCConnectionPool.getInstance();
     }
 
     public List<Playlist> getAllPlayLists() throws SQLException {
-        ArrayList<Playlist> allPlayLists = new ArrayList<>();
+        List<Playlist> allPlayLists = new ArrayList<>();
+        Connection con = connectionPool.checkOut();
 
-        try (Connection connection = myDatabaseConnector.getConnection()) {
-            String sql = "SELECT * FROM Playlist";
+        try (Statement statement = con.createStatement()) {
+            ResultSet rs = statement.executeQuery("SELECT * FROM Playlist");
 
-            Statement statement = connection.createStatement();
+                while (rs.next()) {
 
-            if (statement.execute(sql)) {
-                ResultSet resultSet = statement.getResultSet();
-                while (resultSet.next()) {
-
-                    String name = resultSet.getString("Name");
-                    Integer id = resultSet.getInt("PL_ID");
-                   // int songCount = resultSet.getInt("Songs");
-                   // String totalTime = resultSet.getString("Time");
-
-                    Playlist playlist = new Playlist(name, id);
+                    String name = rs.getString("Name");
+                    Integer id = rs.getInt("ID_Playlist");
+                    List<Song> allSongs = playlistTracksDAO.getPlaylistSongs(id);
+                    Playlist playlist = new Playlist(name, id, allSongs.size(), countTotalTime(allSongs));
+                    playlist.setSongList(allSongs);
                     allPlayLists.add(playlist);
                 }
-            }
-        } return allPlayLists;
+            } return allPlayLists;
+        }
+
+    public int countTotalTime(List<Song> allSongs)
+    {
+        int totalTime = 0;
+        for (Song allSong : allSongs) {
+            totalTime += allSong.getDuration();
+        }
+        return totalTime;
     }
-
-
-
-
 }

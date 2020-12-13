@@ -4,35 +4,37 @@ import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IMyTunes {
 
-    Song createSong(int id, String title, String artist, String category, String duration);
+    Song createSong(int id, String title, String artist, String category, int duration, String path);
 
     void updateSong(Song song);
 
-    void deleleSong(Song song);
-<<<<<<< HEAD
-
     void deleteSong(Song song);
-=======
->>>>>>> parent of e30ce0b... jj
 
     void createGenre(Category category);
 
     void deleteGenre(Category category);
 
-    List<Song> getAllSongs();
+    List<Song> getAllSongs() throws SQLException;
 
-    List<Playlist> getAllPlaylists();
+    List<Playlist> getAllPlaylists() throws SQLException;
 
     List<Category> getAllGenres();
 
     Song getSong(int id);
 
-    List<Playlist> getPlaylist(Song song);
-
     List<Song> getGenres(Song song);
 
+    /**
+     * Searches for all songs that matches the query.
+     * @param query
+     * @return a list of songs that matches the query
+     */
+    List<Song> searchSong(String query) throws SQLException;
+
+    int countTotalTime(List<Song> allSongs);
 }
