@@ -33,7 +33,7 @@ public class PlaylistDAO {
                 while (rs.next()) {
 
                     String name = rs.getString("Name");
-                    Integer id = rs.getInt("ID_Playlist");
+                    int id = rs.getInt("ID_Playlist");
                     List<Song> allSongs = playlistTracksDAO.getPlaylistSongs(id);
                     Playlist playlist = new Playlist(name, id, allSongs.size(), countTotalTime(allSongs));
                     playlist.setSongList(allSongs);
