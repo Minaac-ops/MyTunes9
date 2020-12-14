@@ -39,7 +39,6 @@ public class MyTunesManager implements LogicFacade {
     /**
      * Creates a new song.
      *
-     * @param id
      * @param songTitle
      * @param artist
      * @param category
@@ -47,8 +46,8 @@ public class MyTunesManager implements LogicFacade {
      * @return The new song.
      */
     @Override
-    public Song createSong(int id, String songTitle, String artist, String category, int duration, String path) {
-        return null;
+    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException {
+        return songDAO.createSong(songTitle, artist, category, duration, path);
     }
 
     /**

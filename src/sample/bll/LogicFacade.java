@@ -17,14 +17,13 @@ public interface LogicFacade {
 
     /**
      * Creates a new song.
-     * @param id
      * @param songTitle
      * @param artist
      * @param category
      * @param duration
      * @return The new song.
      */
-    public Song createSong(int id, String songTitle, String artist, String category, int duration, String path);
+    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException;
 
     /**
      * Deletes a song.

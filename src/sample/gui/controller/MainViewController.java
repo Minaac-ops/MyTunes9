@@ -7,16 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -58,6 +59,15 @@ public class MainViewController implements Initializable {
         private TableColumn<Song, String> nameOnSongPlay;
         @FXML
         private TableColumn<Song, Integer> idOnSongPlay;
+        @FXML
+        private Button playButton;
+        @FXML
+        private Label currentSong;
+        @FXML
+        private Slider volumeSlider;
+
+        private MediaPlayer mediaPlayer;
+        private int currentSongPlaying = 0;
 
 
         public MainViewController() throws IOException, SQLException {
@@ -100,6 +110,53 @@ public class MainViewController implements Initializable {
         }
 
         @FXML
+        private void playSong(ActionEvent event) {
+            if (mediaPlayer == null && lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
+                currentSongPlaying = lstSongsInPlayList.getSelectionModel().getSelectedIndex();
+                play();
+            } else {
+                currentSong.setText("(none) is now playing");
+                playButton.setText("⏵");
+                stopMediaPlayer();
+                mediaPlayer = null;
+            }
+        }
+
+        private void play() {
+            playButton.setText("||");
+            mediaPlayer = new MediaPlayer(new Media(new File(lstSongsInPlayList.getItems().get(currentSongPlaying).getPath()).toURI().toString()));
+            lstSongsInPlayList.getSelectionModel().clearAndSelect(currentSongPlaying);
+            currentSong.setText(lstSongsInPlayList.getItems().get(currentSongPlaying).getTitle() + " is now playing");
+            mediaPlayer.play();
+            makeSound();
+            mediaPlayer.setOnEndOfMedia(() -> {
+                if (lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
+                    if (lstSongsInPlayList.getItems().size() == currentSongPlaying + 1) {
+                    currentSongPlaying = 0;
+                } else {
+                    currentSongPlaying++;
+                }
+                play();
+            } else {
+                stopMediaPlayer();
+            }
+        });
+        }
+
+        private void stopMediaPlayer() {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                currentSong.setText("(none) is playing");
+                playButton.setText("⏵");
+                mediaPlayer = null;
+            }
+        }
+
+        private void makeSound() {
+            mediaPlayer.setVolume(volumeSlider.getValue());
+        }
+
+        @FXML
         public void newSongbtn(ActionEvent event) throws IOException {
             Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewSong.fxml"));
             Scene scene = new Scene(root);
@@ -125,5 +182,5 @@ public class MainViewController implements Initializable {
         private void handleSearchSongs(ActionEvent event) throws SQLException {
             String query = txtSongSearch.getText().trim();
             songModel.serchSongs(query);
-            }
         }
+}

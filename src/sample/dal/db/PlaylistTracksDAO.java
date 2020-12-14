@@ -23,7 +23,7 @@ public class PlaylistTracksDAO {
         List<Song> newSongList = new ArrayList();
         Connection con = connectionPool.checkOut();
         try (Statement statement = con.createStatement()) {
-            ResultSet rs = statement.executeQuery("SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song;");
+            ResultSet rs = statement.executeQuery("SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song ORDER BY IDPlaylist;");
             
             while (rs.next()) {
                 Song son = new Song(rs.getInt("IDSong"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IMyTunes {
 
-    Song createSong(int id, String title, String artist, String category, int duration, String path);
+    Song createSong(String title, String artist, String category, int duration, String path) throws SQLException;
 
     void updateSong(Song song);
 
