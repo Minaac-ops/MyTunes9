@@ -64,8 +64,6 @@ public class MainViewController implements Initializable {
         @FXML
         private TableColumn<Song, Integer> idOnSongPlay;
         @FXML
-        private Button playButton;
-        @FXML
         private Label currentSong;
         @FXML
         private Slider volumeSlider;
@@ -120,14 +118,12 @@ public class MainViewController implements Initializable {
                 play();
             } else {
                 currentSong.setText("(none) is now playing");
-                playButton.setText("⏵");
                 stopMediaPlayer();
                 mediaPlayer = null;
             }
         }
 
         private void play() {
-            playButton.setText("||");
             mediaPlayer = new MediaPlayer(new Media(new File(lstSongsInPlayList.getItems().get(currentSongPlaying).getPath()).toURI().toString()));
             lstSongsInPlayList.getSelectionModel().clearAndSelect(currentSongPlaying);
             currentSong.setText(lstSongsInPlayList.getItems().get(currentSongPlaying).getTitle() + " is now playing");
@@ -151,7 +147,6 @@ public class MainViewController implements Initializable {
             if (mediaPlayer != null) {
                 mediaPlayer.stop();
                 currentSong.setText("(none) is playing");
-                playButton.setText("⏵");
                 mediaPlayer = null;
             }
         }
@@ -193,6 +188,4 @@ public class MainViewController implements Initializable {
             Song selectedSong = lstSongs.getSelectionModel().getSelectedItem();
             songModel.deleteSong(selectedSong);
         }
-
-
 }
