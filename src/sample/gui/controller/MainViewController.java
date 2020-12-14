@@ -9,11 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sample.be.Playlist;
 import sample.be.Song;
+import sample.bll.LogicFacade;
 import sample.gui.model.PlaylistModel;
 import sample.gui.model.SongModel;
 
@@ -21,11 +23,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-
+        private ObservableList<Song> songs;
+        private LogicFacade logicFacade;
         private final SongModel songModel;
         private ObservableList<Song> observableListSong;
 
@@ -183,4 +187,12 @@ public class MainViewController implements Initializable {
             String query = txtSongSearch.getText().trim();
             songModel.serchSongs(query);
         }
+
+        @FXML
+        private void handleDeleteSong(ActionEvent event) {
+            Song selectedSong = lstSongs.getSelectionModel().getSelectedItem();
+            songModel.deleteSong(selectedSong);
+        }
+
+
 }

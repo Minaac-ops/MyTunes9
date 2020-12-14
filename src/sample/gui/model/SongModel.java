@@ -26,6 +26,7 @@ public class SongModel {
     private LogicFacade logiclayer;
 
     public SongModel() throws SQLException, IOException {
+        allSongs = FXCollections.observableArrayList();
         logiclayer = (LogicFacade) new MyTunesManager();
     }
 
@@ -42,5 +43,10 @@ public class SongModel {
             allSongs.clear();
             allSongs.addAll(searchedSongs);
         }
+    }
+
+    public void deleteSong(Song song) {
+        logiclayer.deleteSong(song);
+        allSongs.remove(song);
     }
 }

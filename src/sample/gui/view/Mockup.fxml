@@ -15,7 +15,7 @@
             <buttons>
                 <Button mnemonicParsing="false" onAction="#newSongbtn" text="New" />
                 <Button mnemonicParsing="false" onAction="#editSongbtn" text="Edit" />
-                <Button mnemonicParsing="false" text="Delete" />
+                <Button mnemonicParsing="false" onAction="#handleDeleteSong" text="Delete" />
             </buttons>
         </ButtonBar>
         <ButtonBar layoutX="332.0" layoutY="406.0" prefHeight="40.0" prefWidth="92.0">
@@ -59,9 +59,9 @@
         </columns>
       </TableView>
       <TextField fx:id="txtSongSearch" layoutX="557.0" layoutY="32.0" />
-      <Label fx:id="currentSong" layoutX="312.0" layoutY="23.0" prefHeight="18.0" prefWidth="112.0" />
-      <Button layoutX="42.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="playButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" onAction="#playSong" text="Button" />
+      <Label fx:id="currentSong" layoutX="312.0" layoutY="23.0" prefHeight="18.0" prefWidth="112.0" text="(none) is playing" />
+      <Button layoutX="50.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="playButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" onAction="#playSong" text="⏵" />
       <Button layoutX="153.0" layoutY="20.0" mnemonicParsing="false" text="Button" />
     </children>
 </AnchorPane>
