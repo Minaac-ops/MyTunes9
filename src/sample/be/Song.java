@@ -1,6 +1,13 @@
 package sample.be;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Song {
+
+    private static final String PROP_FILE = "resources/config.properties";
 
     private int id;
     private String title;
@@ -9,13 +16,15 @@ public class Song {
     private int duration;
     private String path;
 
-    public Song(int id, String title, String artist, String category, int duration, String path) {
+    public Song(int id, String title, String artist, String category, int duration, String path) throws IOException {
         this.id = id;
         this.title = title;
         this.artist = artist;
         this.category = category;
         this.duration = duration;
         this.path = path;
+        Properties pathProperties = new Properties();
+        pathProperties.load(new FileInputStream(new File(PROP_FILE)));
     }
 
     public int getId()
@@ -63,9 +72,14 @@ public class Song {
         this.duration = duration;
     }
 
-    public String getPath()
-    {
-        return path;
+    public String getPath() throws IOException {
+        String url;
+        Properties pathProperties = new Properties();
+        FileInputStream ip = new FileInputStream(PROP_FILE);
+        pathProperties.load(ip);
+        url = pathProperties.getProperty("url");
+        return url + path;
+
     }
 
     public void setPath(String path)

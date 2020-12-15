@@ -2,15 +2,11 @@ package sample.bll;
 
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.util.SongSearcher;
-import sample.dal.DalController;
-import sample.dal.IMyTunes;
 import sample.dal.db.PlaylistDAO;
 import sample.dal.db.SongDAO;
-import sample.gui.model.SongModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -46,7 +42,7 @@ public class MyTunesManager implements LogicFacade {
      * @return The new song.
      */
     @Override
-    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException {
+    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException, IOException {
         return songDAO.createSong(songTitle, artist, category, duration, path);
     }
 
@@ -57,7 +53,7 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public void deleteSong(Song songToDelete) {
-
+        songDAO.deleteSong(songToDelete);
     }
 
     /**

@@ -3,12 +3,13 @@ package sample.dal;
 import sample.be.Playlist;
 import sample.be.Song;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public interface IMyTunes {
 
-    Song createSong(String title, String artist, String category, int duration, String path) throws SQLException;
+    Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException;
 
     void updateSong(Song song);
 

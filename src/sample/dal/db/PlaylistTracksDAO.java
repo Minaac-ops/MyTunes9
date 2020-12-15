@@ -30,6 +30,9 @@ public class PlaylistTracksDAO {
                 Song son = new Song(rs.getInt("IDSong"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));
                 newSongList.add(son);
             }
-        } return newSongList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return newSongList;
     }
 }

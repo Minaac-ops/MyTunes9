@@ -2,10 +2,12 @@ package sample.gui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
@@ -17,15 +19,15 @@ public class NewSongController implements Initializable {
 
 
     @FXML
-    private TextField titleField;
+    private TextField txtSongTitle;
     @FXML
-    private TextField artistField;
+    private TextField txtArtistField;
     @FXML
     private TextField categoryField;
     @FXML
     private TextField timeField;
     @FXML
-    private Label urlField;
+    private TextField urlField;
 
     private SongModel songModel;
 
@@ -47,5 +49,18 @@ public class NewSongController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void handleSaveSong(ActionEvent event) throws SQLException, IOException {
+            String title = txtSongTitle.getText().trim();
+            String artist = txtArtistField.getText().trim();
+            String category = categoryField.getText().trim();
+            int duration = Integer.parseInt(timeField.getText().trim());
+            String path = urlField.getText().trim();
+
+            songModel.createSong(title, artist, category, duration, path);
+            Stage stage = (Stage) urlField.getScene().getWindow();
+            stage.close();
     }
 }

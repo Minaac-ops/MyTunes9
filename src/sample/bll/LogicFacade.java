@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import sample.be.Playlist;
 import sample.be.Song;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public interface LogicFacade {
      * @param duration
      * @return The new song.
      */
-    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException;
+    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException, IOException;
 
     /**
      * Deletes a song.

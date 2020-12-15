@@ -1,5 +1,8 @@
 package sample.dal.db;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.sql.*;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -9,8 +12,12 @@ import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class SongDAO {
+
+
+
 
     private MyDatabaseConnector databaseConnector;
 
@@ -36,11 +43,13 @@ public class SongDAO {
                 Song song = new Song(id, title, artist, category, duration, path);
                 allSongs.add(song);
             }
-            return allSongs;
-        }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } return allSongs;
     }
 
-    public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException {
+    public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException {
         String sql = "INSERT INTO Songs (Title,Artist,Category,Time,url) VALUES (?,?,?,?,?);";
 
         try (Connection con = connectionPool.checkOut();
@@ -58,6 +67,17 @@ public class SongDAO {
             }
             Song song = new Song(id, title, artist, category, duration, path);
             return song;
+        }
+    }
+
+    public void deleteSong(Song songToDelete) {
+        try (Connection con = connectionPool.checkOut()) {
+            String query = "DELETE from Songs WHERE ID_Song = ?;";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, songToDelete.getId());
+            preparedStatement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

@@ -45,8 +45,13 @@ public class SongModel {
         }
     }
 
-    public void deleteSong(Song song) {
-        logiclayer.deleteSong(song);
-        allSongs.remove(song);
+    public void deleteSong(Song songToDelete) {
+        logiclayer.deleteSong(songToDelete);
+        allSongs.remove(songToDelete);
+    }
+
+    public void createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException {
+        Song song = logiclayer.createSong(title, artist, category, duration, path);
+        allSongs.add(song);
     }
 }

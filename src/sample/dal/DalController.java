@@ -22,7 +22,7 @@ public class DalController implements IMyTunes {
     }
 
     @Override
-    public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException {
+    public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException {
         return songrepo.createSong(title, artist, category, duration, path);
     }
 

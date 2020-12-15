@@ -27,14 +27,11 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-        private ObservableList<Song> songs;
-        private LogicFacade logicFacade;
         private final SongModel songModel;
         private ObservableList<Song> observableListSong;
 
         private final PlaylistModel playlistModel;
         private ObservableList<Playlist> observableListPlaylist;
-
 
         @FXML
         private TableView<Song> lstSongs;
@@ -72,7 +69,7 @@ public class MainViewController implements Initializable {
         private int currentSongPlaying = 0;
 
 
-        public MainViewController() throws IOException, SQLException {
+    public MainViewController() throws IOException, SQLException {
             songModel = new SongModel();
             playlistModel = new PlaylistModel();
         }
@@ -112,7 +109,7 @@ public class MainViewController implements Initializable {
         }
 
         @FXML
-        private void playSong(ActionEvent event) {
+        private void playSong(ActionEvent event) throws IOException {
             if (mediaPlayer == null && lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
                 currentSongPlaying = lstSongsInPlayList.getSelectionModel().getSelectedIndex();
                 play();
@@ -123,7 +120,7 @@ public class MainViewController implements Initializable {
             }
         }
 
-        private void play() {
+        private void play() throws IOException {
             mediaPlayer = new MediaPlayer(new Media(new File(lstSongsInPlayList.getItems().get(currentSongPlaying).getPath()).toURI().toString()));
             lstSongsInPlayList.getSelectionModel().clearAndSelect(currentSongPlaying);
             currentSong.setText(lstSongsInPlayList.getItems().get(currentSongPlaying).getTitle() + " is now playing");
@@ -136,8 +133,12 @@ public class MainViewController implements Initializable {
                 } else {
                     currentSongPlaying++;
                 }
-                play();
-            } else {
+                    try {
+                        play();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
                 stopMediaPlayer();
             }
         });
@@ -153,6 +154,15 @@ public class MainViewController implements Initializable {
 
         private void makeSound() {
             mediaPlayer.setVolume(volumeSlider.getValue());
+        }
+
+        @FXML
+        public void newPlaylistbtn(ActionEvent event) throws IOException {
+            Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
+            Scene scene = new Scene(root);
+            Stage window = new Stage();
+            window.setScene(scene);
+            window.show();
         }
 
         @FXML
