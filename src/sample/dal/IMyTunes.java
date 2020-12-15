@@ -1,6 +1,5 @@
 package sample.dal;
 
-import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
 
@@ -15,15 +14,9 @@ public interface IMyTunes {
 
     void deleteSong(Song song);
 
-    void createGenre(Category category);
-
-    void deleteGenre(Category category);
-
     List<Song> getAllSongs() throws SQLException;
 
     List<Playlist> getAllPlaylists() throws SQLException;
-
-    List<Category> getAllGenres();
 
     Song getSong(int id);
 

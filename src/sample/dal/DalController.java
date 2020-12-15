@@ -1,7 +1,6 @@
 package sample.dal;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import sample.be.Category;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.util.SongSearcher;
@@ -24,7 +23,7 @@ public class DalController implements IMyTunes {
 
     @Override
     public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException {
-        return null;
+        return songrepo.createSong(title, artist, category, duration, path);
     }
 
     @Override
@@ -34,16 +33,6 @@ public class DalController implements IMyTunes {
 
     @Override
     public void deleteSong(Song song) {
-
-    }
-
-    @Override
-    public void createGenre(Category category) {
-
-    }
-
-    @Override
-    public void deleteGenre(Category category) {
 
     }
 
@@ -59,11 +48,6 @@ public class DalController implements IMyTunes {
         List<Playlist> playlistList;
         playlistList = playlistRepo.getAllPlayLists();
         return playlistList;
-    }
-
-    @Override
-    public List<Category> getAllGenres() {
-        return null;
     }
 
     @Override

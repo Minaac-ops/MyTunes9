@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -67,6 +66,7 @@ public class MainViewController implements Initializable {
         private Label currentSong;
         @FXML
         private Slider volumeSlider;
+
 
         private MediaPlayer mediaPlayer;
         private int currentSongPlaying = 0;

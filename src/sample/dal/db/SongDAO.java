@@ -42,8 +42,9 @@ public class SongDAO {
 
     public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException {
         String sql = "INSERT INTO Songs (Title,Artist,Category,Time,url) VALUES (?,?,?,?,?);";
-        Connection con = connectionPool.checkOut();
-        try (PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+        try (Connection con = connectionPool.checkOut();
+            PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, title);
             st.setString(2, artist);
             st.setString(3, category);

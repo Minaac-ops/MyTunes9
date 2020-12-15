@@ -21,10 +21,11 @@ public class PlaylistTracksDAO {
 
     public List<Song> getPlaylistSongs(int id) throws SQLException {
         List<Song> newSongList = new ArrayList();
-        Connection con = connectionPool.checkOut();
-        try (Statement statement = con.createStatement()) {
-            ResultSet rs = statement.executeQuery("SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song ORDER BY IDPlaylist;");
-            
+        try (Connection con = connectionPool.checkOut()) {
+        String query = "SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song WHERE playListSongs.IDPlaylist = ?;";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Song son = new Song(rs.getInt("IDSong"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));
                 newSongList.add(son);
