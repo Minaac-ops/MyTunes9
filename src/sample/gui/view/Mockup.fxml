@@ -14,7 +14,7 @@
         <ButtonBar layoutX="497.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
             <buttons>
                 <Button mnemonicParsing="false" onAction="#newSongbtn" text="New" />
-                <Button mnemonicParsing="false" onAction="#editSongbtn" text="Edit" />
+                <Button mnemonicParsing="false" text="Edit" />
                 <Button mnemonicParsing="false" onAction="#handleDeleteSong" text="Delete" />
             </buttons>
         </ButtonBar>
