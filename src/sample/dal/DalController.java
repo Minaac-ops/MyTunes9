@@ -82,17 +82,4 @@ public class DalController implements IMyTunes {
     public Song getSong(int id) {
         return null;
     }
-
-    /**
-     * Searches for all songs that matches the query.
-     *
-     * @param query
-     * @return a list of songs that matches the query
-     */
-    @Override
-    public List<Song> searchSong(String query) throws SQLException {
-        List<Song> allSongs = getAllSongs();
-        allSongs = SongSearcher.search(allSongs, query);
-        return allSongs;
-    }
 }

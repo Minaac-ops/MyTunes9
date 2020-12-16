@@ -15,6 +15,7 @@ public class PlaylistDAO {
 
     private final JDBCConnectionPool connectionPool;
 
+
     public PlaylistDAO() throws IOException, SQLServerException {
         connectionPool = JDBCConnectionPool.getInstance();
     }
@@ -49,20 +50,16 @@ public class PlaylistDAO {
 
 
     public Playlist createPlaylist(String name) throws SQLException {
-        String sql = "INSERT INTO Playlist(name) VALUES (?);";
+        String sql = "INSERT INTO Playlist(Name) VALUES (?);";
         try (Connection con = connectionPool.checkOut();
-             PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, name);
-            st.executeUpdate();
-            ResultSet rs = st.getGeneratedKeys();
-            int id = 0;
-            if (rs.next()) {
-                id = rs.getInt(1);
-            }
-            Playlist playlist = new Playlist(name, 0, 0, 0);
-            return playlist;
-
+            st.addBatch();
+            st.executeBatch();
         }
+        Playlist playlist = new Playlist(name, 0, 0, 0);
+        return playlist;
+
     }
 
     public void deletePlaylist(Playlist playToDelete) throws SQLException {

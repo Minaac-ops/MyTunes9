@@ -71,13 +71,6 @@ public interface IMyTunes {
     Song getSong(int id);
 
     /**
-     * Searches for all songs that matches the query.
-     * @param query
-     * @return a list of songs that matches the query
-     */
-    List<Song> searchSong(String query) throws SQLException;
-
-    /**
      * Count the total time of a playlists.
      * @param allSongs
      * @return the total time of a playlisy.

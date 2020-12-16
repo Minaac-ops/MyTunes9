@@ -49,7 +49,9 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public void deleteSong(Song songToDelete) {
-        dalController.deleteSong(songToDelete);
+        if (songToDelete != null) {
+            dalController.deleteSong(songToDelete);
+        }
     }
 
     /**
@@ -93,7 +95,9 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public void deletePlaylist(Playlist playToDelete) throws SQLException {
-        dalController.deletePlaylist(playToDelete);
+        if (playToDelete != null) {
+            dalController.deletePlaylist(playToDelete);
+        }
     }
 
     /**

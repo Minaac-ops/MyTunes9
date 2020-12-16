@@ -32,6 +32,8 @@ public class MainViewController implements Initializable {
 
         private final PlaylistModel playlistModel;
         private ObservableList<Playlist> observableListPlaylist;
+        private MediaPlayer mediaPlayer;
+        private int currentSongPlaying = 0;
 
         @FXML
         private TableView<Song> lstSongs;
@@ -63,10 +65,6 @@ public class MainViewController implements Initializable {
         private Label currentSong;
         @FXML
         private Slider volumeSlider;
-
-
-        private MediaPlayer mediaPlayer;
-        private int currentSongPlaying = 0;
 
 
     public MainViewController() throws IOException, SQLException {
@@ -107,8 +105,13 @@ public class MainViewController implements Initializable {
           idOnSongPlay.setCellValueFactory(new PropertyValueFactory<>("IDD"));
       }
 
+    /**
+     * The button to make the media start and plays the selected song.
+     * @param event
+     * @throws IOException
+     */
       @FXML
-      private void playSong(ActionEvent event) throws IOException {
+      private void handlePlaySong(ActionEvent event) throws IOException {
           if (mediaPlayer == null && lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
               currentSongPlaying = lstSongsInPlayList.getSelectionModel().getSelectedIndex();
               play();
@@ -119,6 +122,10 @@ public class MainViewController implements Initializable {
           }
       }
 
+    /**
+     * Plays the media by getting the location of the media file of the selected song.
+     * @throws IOException
+     */
       private void play() throws IOException {
           mediaPlayer = new MediaPlayer(new Media(new File(lstSongsInPlayList.getItems().get(currentSongPlaying).getPath()).toURI().toString()));
           lstSongsInPlayList.getSelectionModel().clearAndSelect(currentSongPlaying);
@@ -143,7 +150,10 @@ public class MainViewController implements Initializable {
           });
       }
 
-      private void stopMediaPlayer() {
+    /**
+     * Stops the mediaplayer.
+     */
+    private void stopMediaPlayer() {
           if (mediaPlayer != null) {
               mediaPlayer.stop();
               currentSong.setText("(none) is playing");
@@ -151,19 +161,33 @@ public class MainViewController implements Initializable {
           }
       }
 
-      private void makeSound() {
-            mediaPlayer.setVolume(volumeSlider.getValue());
-        }
+    /**
+     * Before you play a song make sure to turn the volume up.
+     */
+    private void makeSound() {
+        mediaPlayer.setVolume(volumeSlider.getValue());
+    }
 
-      @FXML
-      public void newPlaylistbtn(ActionEvent event) throws IOException {
+
+    /**
+     * Opens up the new/edit playlist window so you can add a new playlist to the list of playlists.
+      * @param event
+     * @throws IOException
+     */
+    @FXML
+    public void newPlaylistbtn(ActionEvent event) throws IOException {
           Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
           Scene scene = new Scene(root);
           Stage window = new Stage();
           window.setScene(scene);
           window.show();
-      }
+    }
 
+    /**
+     * Opens the new/edit song window so you can add a new song to the list of songs.
+     * @param event
+     * @throws IOException
+     */
       @FXML
       public void newSongbtn(ActionEvent event) throws IOException {
           Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewSong.fxml"));
@@ -175,6 +199,11 @@ public class MainViewController implements Initializable {
           window.show();
       }
 
+    /**
+     * Opens up the edit/new song window so you can edit the chosen song.
+     * @param event
+     * @throws IOException
+     */
       @FXML
       public void editSongbtn(ActionEvent event) throws IOException {
           if (lstSongs.getSelectionModel().getSelectedIndex() != -1) {
@@ -188,20 +217,46 @@ public class MainViewController implements Initializable {
           }
       }
 
+    /**
+     * Opens up the window so you can edit the name of the chosen playlist.
+     * @param event
+     * @throws IOException
+     */
+      @FXML
+      public void editPlaylistbtn(ActionEvent event) throws IOException {
+          if (lstPlaylist.getSelectionModel().getSelectedIndex() != -1) {
+              Parent root = FXMLLoader.load(getClass().getResource("/sample/gui/view/NewPlaylist.fxml"));
+          }
+      }
+
+    /**
+     * Searches for a song title or the artist of the song.
+     * @param event
+     * @throws SQLException
+     */
       @FXML
       private void handleSearchSongs(ActionEvent event) throws SQLException {
           String query = txtSongSearch.getText().trim();
           songModel.serchSongs(query);
       }
 
+    /**
+     * Deletes the chosen song from the list of songs..
+     * @param event
+     */
       @FXML
       private void handleDeleteSong(ActionEvent event) {
           Song selectedSong = lstSongs.getSelectionModel().getSelectedItem();
           songModel.deleteSong(selectedSong);
       }
 
+    /**
+     * If you are tired of the current song you can skip forward and listen to the next song in the playlisy.
+     * @param event
+     * @throws IOException
+     */
       @FXML
-      private void skipSongForward(ActionEvent event) throws IOException {
+      private void handleSkipSongForward(ActionEvent event) throws IOException {
           if (lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
               stopMediaPlayer();
               if (currentSongPlaying +1 == lstSongsInPlayList.getItems().size()) {
@@ -213,8 +268,12 @@ public class MainViewController implements Initializable {
           }
       }
 
+    /**
+     * If you get want to listen to the song again you can skip backward and listen to it again.
+     * @param event
+     */
       @FXML
-      private void skipSongBackward(ActionEvent event) {
+      private void handleSkipSongBackward(ActionEvent event) {
           if (lstSongsInPlayList.getSelectionModel().getSelectedIndex() != -1) {
               stopMediaPlayer();
               if (currentSongPlaying -1 == -1) {
@@ -225,8 +284,13 @@ public class MainViewController implements Initializable {
           }
       }
 
+    /**
+     * When you click a playlist you get a list of all the songs in
+     * that playlist in the table of songs in playlist.
+     * @param event
+     */
       @FXML
-      private void getSongsInPlaylist(MouseEvent event) {
+      private void handleGetSongsInPlaylist(MouseEvent event) {
           stopMediaPlayer();
           lstSongsInPlayList.getItems().clear();
           List<Song> toBeAddedSongList = lstPlaylist.getSelectionModel().getSelectedItem().getSongList();
@@ -236,18 +300,28 @@ public class MainViewController implements Initializable {
           }
       }
 
+    /**
+     * Refresh the list of songs, when you add a new song.
+     * @throws SQLException
+     */
       public void refreshSongLst() throws SQLException {
           lstSongs.getItems().clear();
           lstSongs.setItems(songModel.getAllSongs());
       }
 
+    /**
+     * Refresh the list of playlists when you add a new playlist.
+     * @throws SQLException
+     */
     public void refreshPlaylst() throws SQLException {
         lstPlaylist.getItems().clear();
         lstPlaylist.setItems(playlistModel.getPlaylists());
     }
 
     @FXML
-    //sletter en playliste, når man trykker på knappen
+    /**
+     * Deletes the chosen playlist.
+     */
     public void handleDeletePlaylist(ActionEvent event) throws SQLException {
         Playlist selectedPlaylist = lstPlaylist.getSelectionModel().getSelectedItem();
         playlistModel.deletePlaylist(selectedPlaylist);

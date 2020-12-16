@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.gui.controller.NewPlaylistController">
     <children>
-        <Button layoutX="249.0" layoutY="184.0" mnemonicParsing="false" onAction="#GoBack" text="Cancel" />
+        <Button layoutX="249.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleGoBack" text="Cancel" />
         <Button layoutX="315.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleSavePlaylist" text="Save" />
         <TextField fx:id="nameField" layoutX="156.0" layoutY="120.0" />
         <Label layoutX="116.0" layoutY="124.0" text="Name:" />

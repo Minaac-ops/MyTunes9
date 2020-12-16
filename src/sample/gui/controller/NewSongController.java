@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class NewSongController implements Initializable {
 
+    private SongModel songModel;
+    MainViewController mainViewController;
 
     @FXML
     private TextField txtSongTitle;
@@ -27,9 +29,6 @@ public class NewSongController implements Initializable {
     private TextField timeField;
     @FXML
     private TextField urlField;
-
-    private SongModel songModel;
-    MainViewController mainViewController;
 
 
     /**

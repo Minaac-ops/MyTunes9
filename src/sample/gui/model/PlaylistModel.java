@@ -17,16 +17,17 @@ public class PlaylistModel {
 
     public PlaylistModel() throws SQLException, IOException{
         logiclayer = new MyTunesManager();
+        playlists = FXCollections.observableArrayList();
+        playlists.addAll(logiclayer.getAllPlaylists());
     }
 
     public ObservableList<Playlist> getPlaylists()throws SQLException {
-        playlists = FXCollections.observableArrayList();
-        playlists.addAll(logiclayer.getAllPlaylists());
         return playlists;
     }
 
-    public void createPlaylist(String play) throws SQLException {
-        logiclayer.createPlaylist(play);
+    public void createPlaylist(String name) throws SQLException {
+        Playlist playlist = logiclayer.createPlaylist(name);
+        playlists.add(playlist);
     }
 
 
@@ -36,11 +37,10 @@ public class PlaylistModel {
     }
 
 
-    public void deletePlaylist(Playlist play) throws SQLException {
-        logiclayer.deletePlaylist(play);
+    public void deletePlaylist(Playlist playlistToDelete) throws SQLException {
+        logiclayer.deletePlaylist(playlistToDelete);
+        playlists.remove(playlistToDelete);
     }
-
-
 }
 
 

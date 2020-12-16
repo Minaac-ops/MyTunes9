@@ -14,17 +14,16 @@ import java.util.List;
 public class SongModel {
 
 
-    private ObservableList<Song> allSongs = FXCollections.observableArrayList();
+    private ObservableList<Song> allSongs;
     private LogicFacade logiclayer;
 
     public SongModel() throws SQLException, IOException {
         allSongs = FXCollections.observableArrayList();
-        logiclayer = (LogicFacade) new MyTunesManager();
+        logiclayer = new MyTunesManager();
+        allSongs.addAll(logiclayer.getAllSongs());
     }
 
-    public ObservableList<Song> getAllSongs() throws SQLException {
-        allSongs = FXCollections.observableArrayList();
-        allSongs.addAll(logiclayer.getAllSongs());
+    public ObservableList<Song> getAllSongs() {
         return allSongs;
     }
 
