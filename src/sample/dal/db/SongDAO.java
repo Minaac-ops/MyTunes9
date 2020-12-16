@@ -1,23 +1,16 @@
 package sample.dal.db;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.sql.*;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Song;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+
 
 public class SongDAO {
-
-
-
 
     private MyDatabaseConnector databaseConnector;
 
@@ -67,6 +60,24 @@ public class SongDAO {
             }
             Song song = new Song(id, title, artist, category, duration, path);
             return song;
+        }
+    }
+
+    public Song updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws SQLException {
+        try (Connection con = connectionPool.checkOut()) {
+            String query = "UPDATE Songs SET Title = ?, Artist = ?, Category = ?, Time= ?, url = ? WHERE ID_Song = ?;";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, artist);
+            preparedStatement.setString(3, category);
+            preparedStatement.setInt(4, duration);
+            preparedStatement.setString(5, path);
+            preparedStatement.executeUpdate();
+            Song song = new Song(songToUpdate.getId(), title, artist, category, duration, path);
+            return song;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

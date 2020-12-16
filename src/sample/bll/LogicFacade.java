@@ -24,25 +24,25 @@ public interface LogicFacade {
      * @param duration
      * @return The new song.
      */
-    public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException, IOException;
+    Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException, IOException;
 
     /**
      * Deletes a song.
      * @param songToDelete
      */
-    public void deleteSong(Song songToDelete);
+    void deleteSong(Song songToDelete);
 
     /**
      * Updates a song.
-     * @param songToDelete
-     * @param id
+     * @param songToUpdate
      * @param songTitle
      * @param artist
      * @param category
      * @param duration
+     * @param path
      * @return The updated song.
      */
-    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, int duration);
+    Song updateSong(Song songToUpdate, String songTitle, String artist, String category, int duration, String path) throws IOException, SQLException;
 
     /**
      * Gets a list og all songs.
@@ -55,19 +55,19 @@ public interface LogicFacade {
      * @param name
      * @return A new empty playlist with the given name.
      */
-    public Playlist createPlaylist(String name);
+    Playlist createPlaylist(String name);
 
     /**
      *
      * @return List of all playlists.
      */
-    public List<Playlist> getAllPlaylists();
+    List<Playlist> getAllPlaylists();
 
     /**
      * Deletes the chosen playlist.
      * @param name
      */
-    public void deletePlaylist(Playlist name);
+    void deletePlaylist(Playlist name);
 
     /**
      * Edit the name of a playlist
@@ -75,7 +75,7 @@ public interface LogicFacade {
      * @param text
      * @return The playlist with the new name.
      */
-    public Playlist editPlaylist(Playlist name, String text);
+    Playlist editPlaylist(Playlist name, String text);
 
     /**
      * Adds a new song to the playlist.
@@ -83,13 +83,7 @@ public interface LogicFacade {
      * @param song
      * @return
      */
-    public Song addToPlaylist(Playlist playlist, Song song);
-
-    /**
-     * Gets a list of all categories.
-     * @return
-     */
-    public List<String> getAllCategories();
+    Song addToPlaylist(Playlist playlist, Song song);
 
     /**
      * Search for all Songs that matches the search.

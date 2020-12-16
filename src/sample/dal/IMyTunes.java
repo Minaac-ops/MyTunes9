@@ -11,7 +11,18 @@ public interface IMyTunes {
 
     Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException;
 
-    void updateSong(Song song);
+
+    /**
+     * @param songToUpdate
+     * @param title
+     * @param artist
+     * @param category
+     * @param duration
+     * @param path
+     * @return
+     * @throws SQLException
+     */
+    Song updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws SQLException;
 
     void deleteSong(Song song);
 

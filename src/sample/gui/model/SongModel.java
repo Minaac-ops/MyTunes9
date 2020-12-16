@@ -3,14 +3,6 @@ package sample.gui.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import sample.Main;
 import sample.be.Song;
 import sample.bll.LogicFacade;
 import sample.bll.MyTunesManager;
@@ -53,5 +45,9 @@ public class SongModel {
     public void createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException {
         Song song = logiclayer.createSong(title, artist, category, duration, path);
         allSongs.add(song);
+    }
+
+    public void updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws IOException, SQLException {
+        logiclayer.updateSong(songToUpdate, title, artist, category, duration, path);
     }
 }

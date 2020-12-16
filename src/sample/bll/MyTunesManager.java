@@ -59,17 +59,17 @@ public class MyTunesManager implements LogicFacade {
     /**
      * Updates a song.
      *
-     * @param songToDelete
-     * @param id
+     * @param songToUpdate
      * @param songTitle
      * @param artist
      * @param category
      * @param duration
+     * @param path
      * @return The updated song.
      */
     @Override
-    public Song updateSong(Song songToDelete, int id, String songTitle, String artist, String category, int duration) {
-        return null;
+    public Song updateSong(Song songToUpdate, String songTitle, String artist, String category, int duration, String path) throws SQLException {
+        return songDAO.updateSong(songToUpdate, songTitle, artist, category, duration, path);
     }
 
     /**
@@ -136,15 +136,6 @@ public class MyTunesManager implements LogicFacade {
         return null;
     }
 
-    /**
-     * Gets a list of all categories.
-     *
-     * @return
-     */
-    @Override
-    public List<String> getAllCategories() {
-        return null;
-    }
 
     /**
      * Search for all Songs that matches the search.

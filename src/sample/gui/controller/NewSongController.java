@@ -2,12 +2,11 @@ package sample.gui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.be.Song;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
@@ -28,6 +27,8 @@ public class NewSongController implements Initializable {
     private TextField timeField;
     @FXML
     private TextField urlField;
+    @FXML
+    private ChoiceBox<Song> lstSongs;
 
     private SongModel songModel;
 
@@ -62,5 +63,9 @@ public class NewSongController implements Initializable {
             songModel.createSong(title, artist, category, duration, path);
             Stage stage = (Stage) urlField.getScene().getWindow();
             stage.close();
+    }
+
+    @FXML
+    public void handleUpdateSong(ActionEvent event) {
     }
 }

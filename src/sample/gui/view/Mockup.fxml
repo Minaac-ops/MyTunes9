@@ -32,7 +32,7 @@
         <Button layoutX="296.0" layoutY="413.0" minWidth="30.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
         <Button layoutX="253.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" />
         <Slider fx:id="volumeSlider" layoutX="43.0" layoutY="63.0" prefHeight="14.0" prefWidth="161.0" />
-      <TableView fx:id="lstPlaylist" layoutX="19.0" layoutY="105.0" prefHeight="294.0" prefWidth="200.0">
+      <TableView fx:id="lstPlaylist" layoutX="19.0" layoutY="105.0" onMouseClicked="#getSongsInPlaylist" prefHeight="294.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="playlistNameColumn" prefWidth="60.79998588562012" text="Name" />
           <TableColumn fx:id="playlistTimeColumn" prefWidth="76.79999542236328" text="Songs" />
@@ -55,8 +55,8 @@
       </TableView>
       <TextField fx:id="txtSongSearch" layoutX="557.0" layoutY="32.0" />
       <Label fx:id="currentSong" layoutX="312.0" layoutY="23.0" prefHeight="18.0" prefWidth="112.0" text="(none) is playing" />
-      <Button layoutX="50.0" layoutY="19.0" mnemonicParsing="false" text="⏮" />
+      <Button layoutX="50.0" layoutY="19.0" mnemonicParsing="false" onAction="#skipSongBackward" text="⏮" />
       <Button fx:id="playButton" layoutX="86.0" layoutY="20.0" mnemonicParsing="false" onAction="#playSong" text="⏯" />
-      <Button layoutX="121.0" layoutY="20.0" mnemonicParsing="false" text="⏩" />
+      <Button layoutX="121.0" layoutY="20.0" mnemonicParsing="false" onAction="#skipSongForward" text="⏩" />
     </children>
 </AnchorPane>

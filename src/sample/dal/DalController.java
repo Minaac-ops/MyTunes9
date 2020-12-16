@@ -27,13 +27,13 @@ public class DalController implements IMyTunes {
     }
 
     @Override
-    public void updateSong(Song song) {
-
+    public Song updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws SQLException {
+        return songrepo.updateSong(songToUpdate, title, artist, category, duration, path);
     }
 
     @Override
     public void deleteSong(Song song) {
-
+        songrepo.deleteSong(song);
     }
 
     @Override
