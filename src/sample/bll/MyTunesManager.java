@@ -5,8 +5,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.util.SongSearcher;
-import sample.dal.db.PlaylistDAO;
-import sample.dal.db.SongDAO;
+import sample.dal.DalController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,27 +13,24 @@ import java.util.List;
 
 public class MyTunesManager implements LogicFacade {
 
-    private final SongDAO songDAO;
-    private PlaylistDAO playlistDAO;
+
+    private final DalController dalController;
 
     public MyTunesManager() throws IOException, SQLServerException {
-            songDAO = new SongDAO();
-            playlistDAO = new PlaylistDAO();
+            dalController = new DalController();
     }
 
     /**
-     * Gets a list of all songs.
-     *
+     * Gets a list of all songs from the database.
      * @return a list of songs.
      */
     @Override
     public List<Song> getAllSongs() throws SQLException {
-        return songDAO.getAllSongs();
+        return dalController.getAllSongs();
     }
 
     /**
-     * Creates a new song.
-     *
+     * Creates a new song to the database.
      * @param songTitle
      * @param artist
      * @param category
@@ -43,22 +39,21 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public Song createSong(String songTitle, String artist, String category, int duration, String path) throws SQLException, IOException {
-        return songDAO.createSong(songTitle, artist, category, duration, path);
+        return dalController.createSong(songTitle, artist, category, duration, path);
     }
 
     /**
-     * Deletes a song.
+     * Deletes a song from the database.
      *
      * @param songToDelete
      */
     @Override
     public void deleteSong(Song songToDelete) {
-        songDAO.deleteSong(songToDelete);
+        dalController.deleteSong(songToDelete);
     }
 
     /**
-     * Updates a song.
-     *
+     * Updates a song in the database.
      * @param songToUpdate
      * @param songTitle
      * @param artist
@@ -69,52 +64,40 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public Song updateSong(Song songToUpdate, String songTitle, String artist, String category, int duration, String path) throws SQLException {
-        return songDAO.updateSong(songToUpdate, songTitle, artist, category, duration, path);
+        return dalController.updateSong(songToUpdate, songTitle, artist, category, duration, path);
     }
 
     /**
-     * Gets a list og all songs.
-     *
-     * @return a list of all songs.
-     */
-    @Override
-    public List<Playlist> getAllPlayLists() throws SQLException {
-
-        return playlistDAO.getAllPlayLists();
-    }
-
-    /**
-     * Creates a new playlist.
+     * Creates a new playlist to the database.
      *
      * @param name
      * @return A new empty playlist with the given name.
      */
     @Override
-    public Playlist createPlaylist(String name) {
-        return null;
+    public Playlist createPlaylist(String name) throws SQLException {
+        return dalController.createPlaylist(name);
     }
 
     /**
-     * @return List of all playlists.
+     * Gets a list of all the playlists from the database.
+     * @return List of all playlists from the database.
      */
     @Override
-    public List<Playlist> getAllPlaylists() {
-        return null;
+    public List<Playlist> getAllPlaylists() throws SQLException {
+       return dalController.getAllPlaylists();
     }
 
     /**
-     * Deletes the chosen playlist.
-     *
-     * @param name
+     * Deletes the chosen playlist from the database.
+     * @param playToDelete
      */
     @Override
-    public void deletePlaylist(Playlist name) {
-
+    public void deletePlaylist(Playlist playToDelete) throws SQLException {
+        dalController.deletePlaylist(playToDelete);
     }
 
     /**
-     * Edit the name of a playlist
-     *
+     * updates the name of a playlist to the database.
      * @param name
      * @param text
      * @return The playlist with the new name.
@@ -125,7 +108,7 @@ public class MyTunesManager implements LogicFacade {
     }
 
     /**
-     * Adds a new song to the playlist.
+     * Adds a new song to the playlist to be saved in the database.
      *
      * @param playlist
      * @param song

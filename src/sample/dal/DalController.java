@@ -5,6 +5,7 @@ import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.util.SongSearcher;
 import sample.dal.db.PlaylistDAO;
+import sample.dal.db.PlaylistTracksDAO;
 import sample.dal.db.SongDAO;
 
 import java.io.IOException;
@@ -15,10 +16,19 @@ public class DalController implements IMyTunes {
 
     private SongDAO songrepo;
     private PlaylistDAO playlistRepo;
+    private PlaylistTracksDAO playSongRepo;
 
     public DalController() throws IOException, SQLServerException {
         songrepo = new SongDAO();
         playlistRepo = new PlaylistDAO();
+        playSongRepo = new PlaylistTracksDAO();
+    }
+
+    @Override
+    public List<Song> getAllSongs() throws SQLException {
+        List<Song> allSongs;
+        allSongs = songrepo.getAllSongs();
+        return allSongs;
     }
 
     @Override
@@ -37,27 +47,39 @@ public class DalController implements IMyTunes {
     }
 
     @Override
-    public List<Song> getAllSongs() throws SQLException {
-        List<Song> allSongs;
-        allSongs = songrepo.getAllSongs();
-        return allSongs;
-    }
-
-    @Override
     public List<Playlist> getAllPlaylists() throws SQLException {
         List<Playlist> playlistList;
         playlistList = playlistRepo.getAllPlayLists();
         return playlistList;
     }
 
-    @Override
-    public Song getSong(int id) {
-        return null;
+    public void deletePlaylist(Playlist playlistToDelete) throws SQLException {
+        playlistRepo.deletePlaylist(playlistToDelete);
     }
 
+    /**
+     * Gets a list of Songs from the chosen playlist from the database.
+     *
+     * @param IDD
+     * @return
+     */
+    @Override
+    public List<Song> getPlaylistSongs(int IDD) throws SQLException {
+        return playSongRepo.getPlaylistSongs(IDD);
+    }
 
     @Override
-    public List<Song> getGenres(Song song) {
+    public int countTotalTime(List<Song> allSongs) {
+        return playlistRepo.countTotalTime(allSongs);
+    }
+
+    @Override
+    public Playlist createPlaylist(String name) throws SQLException{
+        return playlistRepo.createPlaylist(name);
+    }
+
+    @Override
+    public Song getSong(int id) {
         return null;
     }
 
@@ -72,10 +94,5 @@ public class DalController implements IMyTunes {
         List<Song> allSongs = getAllSongs();
         allSongs = SongSearcher.search(allSongs, query);
         return allSongs;
-    }
-
-    @Override
-    public int countTotalTime(List<Song> allSongs) {
-        return playlistRepo.countTotalTime(allSongs);
     }
 }

@@ -16,14 +16,31 @@ public class PlaylistModel {
     private LogicFacade logiclayer;
 
     public PlaylistModel() throws SQLException, IOException{
-        logiclayer = (LogicFacade) new MyTunesManager();
+        logiclayer = new MyTunesManager();
     }
 
     public ObservableList<Playlist> getPlaylists()throws SQLException {
         playlists = FXCollections.observableArrayList();
-        playlists.addAll(logiclayer.getAllPlayLists());
+        playlists.addAll(logiclayer.getAllPlaylists());
         return playlists;
     }
+
+    public void createPlaylist(String play) throws SQLException {
+        logiclayer.createPlaylist(play);
+    }
+
+
+    public void  editPlaylist(Playlist play, String name)
+    {
+        logiclayer.editPlaylist(play, name);
+    }
+
+
+    public void deletePlaylist(Playlist play) throws SQLException {
+        logiclayer.deletePlaylist(play);
+    }
+
+
 }
 
 

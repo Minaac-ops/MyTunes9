@@ -4,12 +4,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import sample.be.Playlist;
 import sample.be.Song;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,4 +48,29 @@ public class PlaylistDAO {
     }
 
 
+    public Playlist createPlaylist(String name) throws SQLException {
+        String sql = "INSERT INTO Playlist(name) VALUES (?);";
+        try (Connection con = connectionPool.checkOut();
+             PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            st.setString(1, name);
+            st.executeUpdate();
+            ResultSet rs = st.getGeneratedKeys();
+            int id = 0;
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+            Playlist playlist = new Playlist(name, 0, 0, 0);
+            return playlist;
+
+        }
+    }
+
+    public void deletePlaylist(Playlist playToDelete) throws SQLException {
+        try (Connection con = connectionPool.checkOut()) {
+        String query = "DELETE FROM Playlist WHERE ID_Playlist = ?;";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1, playToDelete.getId());
+            preparedStatement.execute();
+        }
+    }
 }

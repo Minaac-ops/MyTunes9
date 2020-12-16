@@ -27,10 +27,9 @@ public class NewSongController implements Initializable {
     private TextField timeField;
     @FXML
     private TextField urlField;
-    @FXML
-    private ChoiceBox<Song> lstSongs;
 
     private SongModel songModel;
+    MainViewController mainViewController;
 
 
     /**
@@ -61,11 +60,8 @@ public class NewSongController implements Initializable {
             String path = urlField.getText().trim();
 
             songModel.createSong(title, artist, category, duration, path);
+            mainViewController.refreshSongLst();
             Stage stage = (Stage) urlField.getScene().getWindow();
             stage.close();
-    }
-
-    @FXML
-    public void handleUpdateSong(ActionEvent event) {
     }
 }

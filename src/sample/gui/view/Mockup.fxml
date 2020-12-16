@@ -23,7 +23,7 @@
                 <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Button" />
             </buttons>
         </ButtonBar>
-        <Button layoutX="134.0" layoutY="413.0" minWidth="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="57.0" text="Delete" />
+        <Button layoutX="134.0" layoutY="413.0" minWidth="55.0" mnemonicParsing="false" onAction="#handleDeletePlaylist" prefHeight="26.0" prefWidth="57.0" text="Delete" />
         <Button layoutX="18.0" layoutY="413.0" minWidth="50.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Edit" />
         <Button layoutX="76.0" layoutY="413.0" minWidth="43.0" mnemonicParsing="false" onAction="#newPlaylistbtn" prefHeight="26.0" prefWidth="43.0" text="New" />
         <Button layoutX="442.0" layoutY="138.0" mnemonicParsing="false" text="&lt;" />

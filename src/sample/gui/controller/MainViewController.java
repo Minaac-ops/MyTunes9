@@ -236,17 +236,20 @@ public class MainViewController implements Initializable {
           }
       }
 
-      public void refreshList() throws SQLException {
-          lstPlaylist.getItems().clear();
-          lstPlaylist.setItems(playlistModel.getPlaylists());
-      }
-
-      void refreshSongList(boolean isediting) throws SQLException {
+      public void refreshSongLst() throws SQLException {
           lstSongs.getItems().clear();
           lstSongs.setItems(songModel.getAllSongs());
-          if (isediting) {
-              lstSongsInPlayList.getItems().clear();
-              refreshList();
-          }
       }
+
+    public void refreshPlaylst() throws SQLException {
+        lstPlaylist.getItems().clear();
+        lstPlaylist.setItems(playlistModel.getPlaylists());
+    }
+
+    @FXML
+    //sletter en playliste, når man trykker på knappen
+    public void handleDeletePlaylist(ActionEvent event) throws SQLException {
+        Playlist selectedPlaylist = lstPlaylist.getSelectionModel().getSelectedItem();
+        playlistModel.deletePlaylist(selectedPlaylist);
+    }
 }
