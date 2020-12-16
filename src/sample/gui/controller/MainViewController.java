@@ -103,9 +103,8 @@ public class MainViewController implements Initializable {
           playlistTimeColumn.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
           playlistCount.setCellValueFactory(new PropertyValueFactory<>("songCount"));
 
-          lstSongsInPlayList.setItems(observableListSong);
           nameOnSongPlay.setCellValueFactory(new PropertyValueFactory<>("title"));
-          idOnSongPlay.setCellValueFactory(new PropertyValueFactory<>("id"));
+          idOnSongPlay.setCellValueFactory(new PropertyValueFactory<>("IDD"));
       }
 
       @FXML
@@ -230,9 +229,10 @@ public class MainViewController implements Initializable {
       private void getSongsInPlaylist(MouseEvent event) {
           stopMediaPlayer();
           lstSongsInPlayList.getItems().clear();
-          List<Song> songList = lstPlaylist.getSelectionModel().getSelectedItem().getSongList();
-          for (int x = songList.size() -1; x >= 0; x--) {
-              lstSongsInPlayList.getItems().add(songList.get(x));
+          List<Song> toBeAddedSongList = lstPlaylist.getSelectionModel().getSelectedItem().getSongList();
+          for (int x = toBeAddedSongList.size() -1; x >= 0; x--) {
+              toBeAddedSongList.get(x).setIDD(toBeAddedSongList.size() - x);
+              lstSongsInPlayList.getItems().add(toBeAddedSongList.get(x));
           }
       }
 

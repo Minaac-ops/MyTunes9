@@ -22,7 +22,7 @@ public class SongDAO {
 
     public List<Song> getAllSongs() throws SQLException
     {
-        ArrayList<Song> allSongs = new ArrayList<>();
+        List<Song> allSongs = new ArrayList<>();
         Connection con = connectionPool.checkOut();
         try (Statement statement = con.createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT * FROM Songs;");

@@ -19,15 +19,16 @@ public class PlaylistTracksDAO {
         connectionPool = JDBCConnectionPool.getInstance();
     }
 
-    public List<Song> getPlaylistSongs(int id) throws SQLException {
+    public List<Song> getPlaylistSongs(int IDD) throws SQLException {
         List<Song> newSongList = new ArrayList();
         try (Connection con = connectionPool.checkOut()) {
         String query = "SELECT * FROM playListSongs INNER JOIN Songs ON playListSongs.IDSong = Songs.ID_Song WHERE playListSongs.IDPlaylist = ?;";
         PreparedStatement preparedStatement = con.prepareStatement(query);
-        preparedStatement.setInt(1, id);
+        preparedStatement.setInt(1, IDD);
         ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                Song son = new Song(rs.getInt("IDSong"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));
+                Song son = new Song(rs.getInt("id"), rs.getString("Title"), rs.getString("Artist"), rs.getString("Category"), rs.getInt("Time"), rs.getString("url"));
+                son.setIDD(rs.getInt("id"));
                 newSongList.add(son);
             }
         } catch (IOException e) {
@@ -35,4 +36,6 @@ public class PlaylistTracksDAO {
         }
         return newSongList;
     }
+
+
 }

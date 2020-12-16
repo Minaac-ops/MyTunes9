@@ -15,6 +15,7 @@ public class Song {
     private String category;
     private int duration;
     private String path;
+    private int IDD;
 
     public Song(int id, String title, String artist, String category, int duration, String path) throws IOException {
         this.id = id;
@@ -30,6 +31,10 @@ public class Song {
     public int getId()
     {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle()
@@ -80,6 +85,14 @@ public class Song {
         url = pathProperties.getProperty("url");
         return url + path;
 
+    }
+
+    public int getIDD() {
+        return IDD;
+    }
+
+    public void setIDD(int IDD) {
+        this.IDD = IDD;
     }
 
     public void setPath(String path)
