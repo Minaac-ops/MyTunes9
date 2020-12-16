@@ -20,6 +20,11 @@ public class SongDAO {
         connectionPool = JDBCConnectionPool.getInstance();
     }
 
+    /**
+     * Gets the list of all songs in the database.
+     * @return the list of all songs, with all the columns in the Songs table.
+     * @throws SQLException
+     */
     public List<Song> getAllSongs() throws SQLException
     {
         List<Song> allSongs = new ArrayList<>();
@@ -42,6 +47,17 @@ public class SongDAO {
         } return allSongs;
     }
 
+    /**
+     * creates a new song to the database.
+     * @param title
+     * @param artist
+     * @param category
+     * @param duration
+     * @param path
+     * @return the new song object with all the given parameters.
+     * @throws SQLException
+     * @throws IOException
+     */
     public Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException {
         String sql = "INSERT INTO Songs (Title,Artist,Category,Time,url) VALUES (?,?,?,?,?);";
 
@@ -63,6 +79,17 @@ public class SongDAO {
         }
     }
 
+    /**
+     * updates the values you'd like to update.
+     * @param songToUpdate
+     * @param title
+     * @param artist
+     * @param category
+     * @param duration
+     * @param path
+     * @return the updated song object.
+     * @throws SQLException
+     */
     public Song updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws SQLException {
         try (Connection con = connectionPool.checkOut()) {
             String query = "UPDATE Songs SET Title = ?, Artist = ?, Category = ?, Time= ?, url = ? WHERE ID_Song = ?;";
@@ -81,6 +108,10 @@ public class SongDAO {
         }
     }
 
+    /**
+     * Deletes a song from the database.
+     * @param songToDelete
+     */
     public void deleteSong(Song songToDelete) {
         try (Connection con = connectionPool.checkOut()) {
             String query = "DELETE from Songs WHERE ID_Song = ?;";

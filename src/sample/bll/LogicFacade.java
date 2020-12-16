@@ -87,7 +87,5 @@ public interface LogicFacade {
      * @return
      */
     List<Song> searchSong(String query) throws SQLException;
-
-
 }
 

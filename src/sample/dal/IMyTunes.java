@@ -10,86 +10,87 @@ import java.util.List;
 public interface IMyTunes {
 
     /**
-     * Create a new song to the database.
+     * Gets the list of all songs in the database.
+     * @return the list of all songs, with all the columns in the Songs table.
+     * @throws SQLException
+     */
+    List<Song> getAllSongs() throws SQLException;
+
+    /**
+     * creates a new song to the database.
      * @param title
      * @param artist
      * @param category
      * @param duration
      * @param path
-     * @return the new song in to the list.
+     * @return the new song object with all the given parameters.
      * @throws SQLException
      * @throws IOException
      */
     Song createSong(String title, String artist, String category, int duration, String path) throws SQLException, IOException;
 
     /**
-     * Creates a new playlist to the database.
-     * @param name
-     * @return the new playlist.
-     * @throws SQLException
-     */
-    Playlist createPlaylist(String name) throws SQLException;
-
-
-    /**
+     * updates the values you'd like to update.
      * @param songToUpdate
      * @param title
      * @param artist
      * @param category
      * @param duration
      * @param path
-     * @return
+     * @return the updated song object.
      * @throws SQLException
      */
     Song updateSong(Song songToUpdate, String title, String artist, String category, int duration, String path) throws SQLException;
 
     /**
-     * Delete the chosen song from the database.
-     * @param song the chosen song.
+     * Deletes a song from the database.
+     * @param songToDelete
      */
-    void deleteSong(Song song);
+    void deleteSong(Song songToDelete);
 
     /**
-     * Gets a list of all the songs in the database.
-     * @return The list of songs.
-     * @throws SQLException
-     */
-    List<Song> getAllSongs() throws SQLException;
-
-    /**
-     * Gets a list of all the playlists in the database.
-     * @return the list with playlists.
+     * Get the list of playlists from the database
+     * @return the new playlist with a new name and id.
      * @throws SQLException
      */
     List<Playlist> getAllPlaylists() throws SQLException;
 
     /**
-     * Gets a song from the database.
-     * @param id
-     * @return the song with the given id.
-     */
-    Song getSong(int id);
-
-    /**
-     * Count the total time of a playlists.
-     * @param allSongs
-     * @return the total time of a playlisy.
-     */
-    int countTotalTime(List<Song> allSongs);
-
-    /**
-     * Deletes a playlists from the database.
+     * Deleting a playlist from the database with the chosen id.
      * @param playlistToDelete
      * @throws SQLException
      */
     void deletePlaylist(Playlist playlistToDelete) throws SQLException;
 
-
     /**
-     * Gets a list of Songs from the chosen playlist from the database.
+     * Gets a list of all the songs of a playlist by using inner join.
      * @param IDD
-     * @return
+     * @return a list of songs, where IDSong from the playlistsongs tabel mathces the ID_Song from the songs tabel in the database.
+     * @throws SQLException
      */
     List<Song> getPlaylistSongs(int IDD) throws SQLException;
+
+    /**
+     * Counts the total time in seconds of the playlists, by adding together the duration of the songs.
+     * @param allSongs
+     * @return the total time of the playlists.
+     */
+    int countTotalTime(List<Song> allSongs);
+
+    /**
+     * Creating a new playlist in the database.
+     * @param name
+     * @return the new playlist with a chosen and a id, totaltime and songcount wich is both 0 to begin with because
+     * there is now songs in the playlist yet.
+     * @throws SQLException
+     */
+    Playlist createPlaylist(String name) throws SQLException;
+
+    /**
+     * Get a specific song using the id.
+     * @param id
+     * @return the chosen song.
+     */
+    Song getSong(int id);
 
 }

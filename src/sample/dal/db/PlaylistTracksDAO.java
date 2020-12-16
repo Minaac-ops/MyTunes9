@@ -1,7 +1,6 @@
 package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-import sample.be.Playlist;
 import sample.be.Song;
 
 import java.io.IOException;
@@ -19,6 +18,12 @@ public class PlaylistTracksDAO {
         connectionPool = JDBCConnectionPool.getInstance();
     }
 
+    /**
+     * Gets a list of all the songs of a playlist by using inner join.
+     * @param IDD
+     * @return a list of songs, where IDSong from the playlistsongs tabel mathces the ID_Song from the songs tabel in the database.
+     * @throws SQLException
+     */
     public List<Song> getPlaylistSongs(int IDD) throws SQLException {
         List<Song> newSongList = new ArrayList();
         try (Connection con = connectionPool.checkOut()) {
@@ -36,6 +41,4 @@ public class PlaylistTracksDAO {
         }
         return newSongList;
     }
-
-
 }
