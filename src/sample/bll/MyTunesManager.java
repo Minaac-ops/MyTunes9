@@ -6,6 +6,7 @@ import sample.be.Playlist;
 import sample.be.Song;
 import sample.bll.util.SongSearcher;
 import sample.dal.DalController;
+import sample.dal.db.PlaylistTracksDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -112,7 +113,7 @@ public class MyTunesManager implements LogicFacade {
     }
 
     /**
-     * Adds a new song to the playlist to be saved in the database.
+     * Adds the chosen song to the playlist to be saved in the database.
      *
      * @param playlist
      * @param song
@@ -120,7 +121,7 @@ public class MyTunesManager implements LogicFacade {
      */
     @Override
     public Song addToPlaylist(Playlist playlist, Song song) {
-        return null;
+        return dalController.addToPlaylist(playlist, song);
     }
 
 
@@ -135,5 +136,10 @@ public class MyTunesManager implements LogicFacade {
         List<Song> allSongs = getAllSongs();
         allSongs = SongSearcher.search(allSongs, query);
         return allSongs;
+    }
+
+    public List<Song> getPlaylistSongs(int IDD) {
+        List<Song> allPlaysongs = getPlaylistSongs(IDD);
+        return allPlaysongs;
     }
 }

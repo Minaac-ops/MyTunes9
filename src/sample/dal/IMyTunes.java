@@ -93,4 +93,12 @@ public interface IMyTunes {
      */
     Song getSong(int id);
 
+    /**
+     * Adds the chosen song to the playlist.
+     * @param playlist
+     * @param song
+     * @return
+     */
+    Song addToPlaylist(Playlist playlist, Song song);
+
 }

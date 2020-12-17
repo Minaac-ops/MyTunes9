@@ -73,7 +73,7 @@ public interface LogicFacade {
     Playlist editPlaylist(Playlist name, String text);
 
     /**
-     * Adds a new song to the playlist to be saved in the database.
+     * Adds the chosen song to the playlist to be saved in the database.
      *
      * @param playlist
      * @param song
@@ -87,5 +87,7 @@ public interface LogicFacade {
      * @return
      */
     List<Song> searchSong(String query) throws SQLException;
+
+    List<Song> getPlaylistSongs(int IDD);
 }
 

@@ -3,10 +3,8 @@ package sample.gui.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.be.Song;
 import sample.gui.model.SongModel;
 
 import java.io.IOException;
@@ -50,6 +48,12 @@ public class NewSongController implements Initializable {
         }
     }
 
+    /**
+     * Save the new song to the list of songs and takes you back to the main view.
+     * @param event
+     * @throws SQLException
+     * @throws IOException
+     */
     @FXML
     public void handleSaveSong(ActionEvent event) throws SQLException, IOException {
             String title = txtSongTitle.getText().trim();

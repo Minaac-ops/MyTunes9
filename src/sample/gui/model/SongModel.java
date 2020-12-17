@@ -3,6 +3,7 @@ package sample.gui.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import sample.be.Song;
 import sample.bll.LogicFacade;
 import sample.bll.MyTunesManager;
@@ -13,7 +14,6 @@ import java.util.List;
 
 public class SongModel {
 
-
     private ObservableList<Song> allSongs;
     private LogicFacade logiclayer;
 
@@ -21,6 +21,7 @@ public class SongModel {
         allSongs = FXCollections.observableArrayList();
         logiclayer = new MyTunesManager();
         allSongs.addAll(logiclayer.getAllSongs());
+
     }
 
     public ObservableList<Song> getAllSongs() {

@@ -1,6 +1,7 @@
 package sample.dal.db;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
+import sample.be.Playlist;
 import sample.be.Song;
 
 import java.io.IOException;
@@ -40,5 +41,24 @@ public class PlaylistTracksDAO {
             e.printStackTrace();
         }
         return newSongList;
+    }
+
+    public Song addToPlaylist(Playlist playlist, Song song) {
+        String sql = "INSERT INTO playListSongs(IDPlaylist,IDSong,id) VALUES(?,?,?);";
+
+        try (Connection con = connectionPool.checkOut();
+        PreparedStatement st = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            st.setInt(1, playlist.getId());
+            st.setInt(2, song.getId());
+            st.executeUpdate();
+            ResultSet rs = st.getGeneratedKeys();
+            int id = 0;
+            if (rs.next()) {
+                id = rs.getInt(3);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return song;
     }
 }

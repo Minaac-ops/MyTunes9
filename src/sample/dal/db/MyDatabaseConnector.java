@@ -16,6 +16,11 @@ import java.util.Properties;
 
 public class MyDatabaseConnector {
 
+    /**
+     * MyDatabaseConnector makes the connection to the database. We have a main method here as well
+     * to test the connection.
+     */
+
     private SQLServerDataSource dataSource;
 
     public MyDatabaseConnector()

@@ -139,4 +139,16 @@ public class DalController implements IMyTunes {
     public Song getSong(int id) {
         return null;
     }
+
+    /**
+     * Adds the chosen song to the playlist.
+     *
+     * @param playlist
+     * @param song
+     * @return
+     */
+    @Override
+    public Song addToPlaylist(Playlist playlist, Song song) {
+        return playSongRepo.addToPlaylist(playlist, song);
+    }
 }

@@ -3,6 +3,9 @@ package sample.be;
 import java.util.List;
 
 public class Playlist {
+    /**
+     * Be klasserne er
+     */
 
     private List<Song> songList; //List of songs in the playlist
     private String name;

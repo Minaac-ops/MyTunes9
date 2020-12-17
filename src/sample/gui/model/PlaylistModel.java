@@ -21,10 +21,20 @@ public class PlaylistModel {
         playlists.addAll(logiclayer.getAllPlaylists());
     }
 
+    /**
+     * Gets a list of all the playlists.
+     * @return
+     * @throws SQLException
+     */
     public ObservableList<Playlist> getPlaylists()throws SQLException {
         return playlists;
     }
 
+    /**
+     * creates a new playlists with a name.
+     * @param name
+     * @throws SQLException
+     */
     public void createPlaylist(String name) throws SQLException {
         Playlist playlist = logiclayer.createPlaylist(name);
         playlists.add(playlist);
@@ -36,10 +46,24 @@ public class PlaylistModel {
         logiclayer.editPlaylist(play, name);
     }
 
-
+    /**
+     * Lets you delete a playlist.
+     * @param playlistToDelete
+     * @throws SQLException
+     */
     public void deletePlaylist(Playlist playlistToDelete) throws SQLException {
         logiclayer.deletePlaylist(playlistToDelete);
         playlists.remove(playlistToDelete);
+    }
+
+    /**
+     * Add a song from the songlist to the chosen playlist.
+     * @param playlist
+     * @param song
+     * @return
+     */
+    public Song addToPlaylist(Playlist playlist, Song song) {
+        return logiclayer.addToPlaylist(playlist, song);
     }
 }
 
