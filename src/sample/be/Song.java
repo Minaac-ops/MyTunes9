@@ -7,6 +7,10 @@ import java.util.Properties;
 
 public class Song {
 
+    /**
+     * the be classes are made for getter and setter methods.
+     */
+
     private static final String PROP_FILE = "resources/config.properties";
 
     private int id;

@@ -3,8 +3,9 @@ package sample.be;
 import java.util.List;
 
 public class Playlist {
+
     /**
-     * Be klasserne er
+     * The be classes are made for getter and setter methods.
      */
 
     private List<Song> songList; //List of songs in the playlist
