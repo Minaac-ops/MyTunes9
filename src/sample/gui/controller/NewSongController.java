@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class NewSongController implements Initializable {
 
     private SongModel songModel;
-    MainViewController mainViewController;
+    MainViewController mainController;
 
     @FXML
     private TextField txtSongTitle;
@@ -63,8 +63,11 @@ public class NewSongController implements Initializable {
             String path = urlField.getText().trim();
 
             songModel.createSong(title, artist, category, duration, path);
-            mainViewController.refreshSongLst();
-            Stage stage = (Stage) urlField.getScene().getWindow();
-            stage.close();
+    }
+
+    @FXML public void handleCloseWindow(ActionEvent event)
+    {
+        Stage stage = (Stage) urlField.getScene().getWindow();
+        stage.close();
     }
 }

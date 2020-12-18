@@ -47,7 +47,7 @@ public class NewPlaylistController implements Initializable {
      * @param event
      */
     @FXML
-    private void handleGoBack(ActionEvent event) {
+    private void handleCloseWindow(ActionEvent event) {
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
@@ -65,6 +65,5 @@ public class NewPlaylistController implements Initializable {
                 playlistModel.createPlaylist(name);
             }
         }
-        mainViewController.refreshPlaylst();
     }
 }

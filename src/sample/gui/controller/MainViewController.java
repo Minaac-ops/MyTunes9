@@ -312,16 +312,6 @@ public class MainViewController implements Initializable {
     }
 
     /**
-     * Refresh the list of songs, when you add a new song.
-     *
-     * @throws SQLException
-     */
-    public void refreshSongLst() throws SQLException {
-        lstSongs.getItems().clear();
-        lstSongs.setItems(songModel.getAllSongs());
-    }
-
-    /**
      * Refresh the list of playlists when you add a new playlist.
      *
      * @throws SQLException
